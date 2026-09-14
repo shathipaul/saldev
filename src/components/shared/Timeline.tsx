@@ -48,7 +48,9 @@ export default function Timeline({ rows, noteStyle = "scaled" }: Props) {
               <RichText runs={row.body} emphasisClassName="font-semibold text-ink-2 not-italic" />
             </p>
             {row.you || row.us ? (
-              <p className="mt-3 flex flex-wrap gap-x-[18px] gap-y-2 text-[13.5px] text-ink-4">
+              // body size, not the smaller meta size: the source's `.ch-body p` rule
+              // outranks `.yw`, so these read at 16px and wrap within the same measure
+              <p className="mt-3 flex max-w-[60ch] flex-wrap gap-x-[18px] gap-y-2 text-[16px] leading-[1.63] text-ink-4">
                 {row.you ? (
                   <span>
                     <b className="mr-1 font-semibold text-ink">You:</b>

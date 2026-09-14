@@ -40,7 +40,9 @@ export default function Footer() {
               <span className="brand-mark block size-9 shrink-0 [filter:drop-shadow(0_0_0_rgba(0,0,0,0))_drop-shadow(0_2px_10px_rgba(255,94,0,.25))] transition-transform duration-[400ms] ease-brand group-hover:rotate-[-6deg] group-hover:scale-[1.06]">
                 <BrandMark />
               </span>
-              <span className="text-[19px] font-bold tracking-[-.02em] text-white">SalDev</span>
+              <span className="text-[19px] font-bold tracking-[-.02em] text-white">
+                SalDev
+              </span>
             </Link>
             <p className="mt-4 max-w-[30ch] text-[14.5px] leading-[1.6] text-white/55">
               Multichannel outbound. Email, LinkedIn, X. You own everything.
@@ -62,17 +64,39 @@ export default function Footer() {
         <div className="flex flex-wrap items-center justify-between gap-5 border-t border-white/10 py-6 text-[13.5px] text-white/42">
           <span>© {new Date().getFullYear()} SalDev. All rights reserved.</span>
           <div className="flex gap-[9px]">
-            <a href="#" aria-label="LinkedIn" className={SOCIAL_LINK}>
-              <svg viewBox="0 0 24 24" fill="currentColor" className={SOCIAL_ICON} aria-hidden="true">
+            <a
+              href="https://www.linkedin.com/company/saldev"
+              aria-label="LinkedIn"
+              className={SOCIAL_LINK}
+            >
+              <svg
+                viewBox="0 0 24 24"
+                fill="currentColor"
+                className={SOCIAL_ICON}
+                aria-hidden="true"
+              >
                 <path d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.35V9h3.41v1.56h.05a3.74 3.74 0 0 1 3.37-1.85c3.6 0 4.27 2.37 4.27 5.46v6.28ZM5.34 7.43a2.06 2.06 0 1 1 0-4.13 2.06 2.06 0 0 1 0 4.13ZM7.12 20.45H3.55V9h3.57v11.45Z" />
               </svg>
             </a>
-            <a href="#" aria-label="X" className={SOCIAL_LINK}>
-              <svg viewBox="0 0 24 24" fill="currentColor" className={SOCIAL_ICON} aria-hidden="true">
+            <a
+              href="https://x.com/SALDEVio"
+              aria-label="X"
+              className={SOCIAL_LINK}
+            >
+              <svg
+                viewBox="0 0 24 24"
+                fill="currentColor"
+                className={SOCIAL_ICON}
+                aria-hidden="true"
+              >
                 <path d="M18.24 2.25h3.31l-7.23 8.26 8.5 11.24h-6.66l-5.21-6.82-5.97 6.82H1.66l7.73-8.84L1.24 2.25h6.83l4.71 6.23 5.46-6.23Zm-1.16 17.52h1.83L7.08 4.13H5.11l11.97 15.64Z" />
               </svg>
             </a>
-            <a href="#" aria-label="Email" className={SOCIAL_LINK}>
+            <a
+              href="mailto:info@saldev.io"
+              aria-label="Email"
+              className={SOCIAL_LINK}
+            >
               <svg
                 viewBox="0 0 24 24"
                 fill="none"
@@ -91,7 +115,10 @@ export default function Footer() {
       </div>
 
       {/* oversized wordmark, cropped by the page edge */}
-      <div className="f-mark relative z-[2] h-[clamp(84px,15.5vw,196px)] overflow-hidden" aria-hidden="true">
+      <div
+        className="f-mark relative z-[2] h-[clamp(84px,15.5vw,196px)] overflow-hidden"
+        aria-hidden="true"
+      >
         <div className="tex absolute inset-0 opacity-[.34] mask-fade-down" />
         <span className="relative block translate-y-[-2%] text-center text-[clamp(112px,21vw,268px)] leading-[.8] font-extrabold tracking-[-.058em] text-ink select-none [text-shadow:0_1px_0_rgba(255,255,255,.05)]">
           SalDev

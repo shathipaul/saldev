@@ -12,9 +12,21 @@ export type CaseStudy = {
   sampleIdentity?: boolean;
 };
 
-const ZENMUL: ProofImage = { src: "/logos/zenmul.png", alt: "Zenmul", size: 104 };
-const HASHTAGATIQ: ProofImage = { src: "/logos/hashtagatiq.png", alt: "HashtagAtiq", size: 104 };
-const PLACEHOLDER: ProofImage = { src: "/logos/placeholder.svg", alt: "", size: 38 };
+const ZENMUL: ProofImage = {
+  src: "/logos/zenmul.png",
+  alt: "Zenmul",
+  size: 104,
+};
+const HASHTAGATIQ: ProofImage = {
+  src: "/logos/hashtagatiq.png",
+  alt: "HashtagAtiq",
+  size: 104,
+};
+const PLACEHOLDER: ProofImage = {
+  src: "/logos/placeholder.svg",
+  alt: "",
+  size: 38,
+};
 
 const SAMPLE_STORY =
   "A starting position in one line: where the pipeline came from before, and why it stopped scaling.";
@@ -40,26 +52,26 @@ export const CASE_STUDIES: CaseStudy[] = [
       "Cold outreach sent by hand between client projects, landing in promotions and getting no response.",
     result: "First meeting booked on day 9",
   },
-  {
-    logo: PLACEHOLDER,
-    name: "Client three",
-    tagline: "what they do",
-    stat: "27",
-    statLabel: "meetings in 9 weeks",
-    story: SAMPLE_STORY,
-    result: "Optional second number",
-    sampleIdentity: true,
-  },
-  {
-    logo: PLACEHOLDER,
-    name: "Client four",
-    tagline: "what they do",
-    stat: "$184k",
-    statLabel: "pipeline sourced in 4 months",
-    story: SAMPLE_STORY,
-    result: "Optional second number",
-    sampleIdentity: true,
-  },
+  // {
+  //   logo: PLACEHOLDER,
+  //   name: "Client three",
+  //   tagline: "what they do",
+  //   stat: "27",
+  //   statLabel: "meetings in 9 weeks",
+  //   story: SAMPLE_STORY,
+  //   result: "Optional second number",
+  //   sampleIdentity: true,
+  // },
+  // {
+  //   logo: PLACEHOLDER,
+  //   name: "Client four",
+  //   tagline: "what they do",
+  //   stat: "$184k",
+  //   statLabel: "pipeline sourced in 4 months",
+  //   story: SAMPLE_STORY,
+  //   result: "Optional second number",
+  //   sampleIdentity: true,
+  // },
 ];
 
 export type Testimonial = {

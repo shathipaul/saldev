@@ -12,7 +12,7 @@ type NavLink = { label: string; href: string; icon: ReactNode };
 const ICON = "size-[15px] shrink-0";
 
 const LINKS: NavLink[] = [
-  { label: "How it works", href: "/#how", icon: <ArrowIcon className={ICON} strokeWidth={2.2} /> },
+  { label: "How it works", href: "/how-it-works", icon: <ArrowIcon className={ICON} strokeWidth={2.2} /> },
   { label: "Services", href: "/services", icon: <GridIcon className={ICON} /> },
   { label: "Pricing", href: "/pricing", icon: <DollarIcon className={ICON} /> },
   { label: "About", href: "/about", icon: <PeopleIcon className={ICON} /> },
