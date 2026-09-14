@@ -1,26 +1,440 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+/* ============================================================
+   SalDev — OutboundOS
+   Palette: Belkins (#FF5E00 on #F5F5F5, Inter)
+   Layout language: Stripe (angled gradient ribbon, two-tone
+   paragraphs, precision stat line, generous left-aligned grid)
+   Continuity: WeaveOS (tonal step + stitched slabs, no dividers)
+   Edge wash: Zaymo (soft side gradients)
+   Nav: 21st.dev gradient menu (expanding pills, gradient shadow)
+
+   Tailwind v4, CSS-first config. Everything that fits a utility
+   lives in the markup; this file holds the design tokens plus the
+   ~15% of the design that has no utility form (keyframes driven by
+   per-element custom properties, mask stacks, decorative
+   pseudo-element gradient layers, SVG-internal rules).
+   ============================================================ */
+
+@theme {
+  /* ---------- Belkins core ---------- */
+  --color-orange:      #FF5E00;
+  --color-orange-hot:  #FF6221;
+  --color-orange-soft: #FE8C5A;
+  --color-orange-pale: #FCC8AE;
+  --color-orange-tint: #FCE0D0;
+  --color-orange-deep: #B24000;   /* readable orange for text on tint */
+
+  --color-bg:    #F5F5F5;
+  --color-slab:  #EDECEA;         /* ~3% step: a lighting change, not a boundary */
+  --color-raise: #FBFBFB;
+
+  --color-ink:   #000000;
+  --color-ink-2: #292929;
+  --color-ink-3: #3D3D3D;
+  --color-ink-4: #666666;
+  --color-ink-5: #A3A3A3;
+
+  --color-line:   #EBEBEB;
+  --color-line-2: #E0E0E0;
+
+  /* pricing: the stacked bill bars */
+  --color-bar-1: #FCE8DC;
+  --color-bar-2: #FCD3BB;
+  --color-bar-3: #FDB086;
+
+  /* ---------- shadows (pricing) ---------- */
+  --shadow-card:   0 34px 64px -34px rgba(0,0,0,.38), 0 12px 28px -18px rgba(255,94,0,.28);
+  --shadow-avatar: 0 8px 18px -8px rgba(255,94,0,.7);
+  --shadow-bar:    0 10px 22px -16px rgba(0,0,0,.35);
+  --shadow-ten:    0 20px 44px -36px rgba(0,0,0,.3);
+
+  /* ---------- type ---------- */
+  --font-weight-mid:  550;        /* font-mid  */
+  --font-weight-semi: 650;        /* font-semi */
+
+  /* ---------- shape ---------- */
+  --radius-sm:   8px;
+  --radius-md:  14px;
+  --radius-lg:  22px;
+  --radius-slab: 32px;
+
+  --container-page: 1180px;       /* max-w-page */
+
+  /* ---------- motion ---------- */
+  --ease-brand: cubic-bezier(.22,1,.36,1);
+  --ease-soft:  cubic-bezier(.4,0,.2,1);
+
+  --animate-breathe:   breathe 6s var(--ease-soft) infinite;
+  --animate-slide:     slide 64s linear infinite;
+  --animate-pulse-ring: pulse-ring 2.4s infinite;
+  --animate-slide-in:  slide-in .7s var(--ease-brand) both;
+  --animate-float:     float 7s var(--ease-soft) infinite;
+
+  @keyframes breathe {
+    0%,100% { opacity:.5; transform:scale(1) }
+    50%     { opacity:.8; transform:scale(1.05) }
+  }
+  @keyframes slide {
+    from { transform:translateX(0) }
+    to   { transform:translateX(-50%) }
+  }
+  @keyframes pulse-ring {
+    0%,100% { box-shadow:0 0 0 3px rgba(255,94,0,.18) }
+    50%     { box-shadow:0 0 0 7px rgba(255,94,0,.05) }
+  }
+  @keyframes slide-in {
+    from { opacity:0; transform:translateX(-24px) }
+    to   { opacity:1; transform:none }
+  }
+  @keyframes float {
+    0%,100% { transform:translateY(0) }
+    50%     { transform:translateY(-6px) }
+  }
+
+  /* ---------- breakpoints ----------
+     Defaults cleared so nobody reaches for sm:/md:/lg: and gets a
+     value this design never used. These are the original media
+     queries, one name each:
+
+       max-mini  ≤560px      max-eq    ≤900px      max-split ≤1080px
+       max-phone ≤640px      max-cols  ≤940px      max-wide  ≤1180px
+       max-faq   ≤860px      cols      ≥941px
+     ------------------------------------------------------------ */
+  --breakpoint-*:      initial;
+  --breakpoint-mini:    561px;
+  --breakpoint-sm:      640px;   /* sm/md/lg: the Tailwind-built pricing page */
+  --breakpoint-md:      768px;
+  --breakpoint-lg:     1024px;
+  --breakpoint-phone:   641px;
+  --breakpoint-faq:     861px;
+  --breakpoint-eq:      901px;
+  --breakpoint-cols:    941px;
+  --breakpoint-split:  1081px;
+  --breakpoint-wide:   1181px;
 }
 
+/* Fonts are self-hosted through next/font; the root layout puts the
+   --font-inter / --font-jetbrains-mono variables on <html>. */
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --font-sans: var(--font-inter), Inter, system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-mono: var(--font-jetbrains-mono), "JetBrains Mono", monospace;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+/* ============================================================
+   Custom variants — the state classes the components toggle.
+   `on:`/`is-open:`/`sel:` style the element itself; descendants use
+   Tailwind's `group-[.on]:` against a `group` parent.
+   ============================================================ */
+@custom-variant on (&.on);
+@custom-variant is-open (&.open);
+@custom-variant sel (&.sel);
+@custom-variant stuck (&.stuck);
+@custom-variant no-hover (@media (hover: none));
+
+/* ============================================================
+   Custom utilities — mask stacks, which have no utility form.
+   ============================================================ */
+@utility mask-fade-x {
+  -webkit-mask-image: linear-gradient(90deg,transparent,#000 9%,#000 91%,transparent);
+          mask-image: linear-gradient(90deg,transparent,#000 9%,#000 91%,transparent);
+}
+@utility mask-fade-down {
+  -webkit-mask-image: linear-gradient(180deg,transparent,#000 42%);
+          mask-image: linear-gradient(180deg,transparent,#000 42%);
+}
+@utility mask-burst {
+  -webkit-mask-image: linear-gradient(180deg,transparent 0%,rgba(0,0,0,.45) 14%,rgba(0,0,0,.9) 34%,#000 52%);
+          mask-image: linear-gradient(180deg,transparent 0%,rgba(0,0,0,.45) 14%,rgba(0,0,0,.9) 34%,#000 52%);
+}
+@utility mask-plan-art {
+  /* fade toward the copy so any overlap stays soft */
+  -webkit-mask-image: radial-gradient(120% 120% at 88% 12%,#000 38%,rgba(0,0,0,.35) 66%,transparent 88%);
+          mask-image: radial-gradient(120% 120% at 88% 12%,#000 38%,rgba(0,0,0,.35) 66%,transparent 88%);
+}
+
+/* Anchor navigation only animates when the reader has not asked for
+   reduced motion (the <html> element carries scroll-smooth). */
+@layer base {
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto }
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+/* ============================================================
+   COMPONENTS — the parts with no utility form.
+
+   Four reasons something is down here rather than in the markup:
+     1. @keyframes reading per-element custom properties (the hero
+        rays: 90 SVG nodes, each with its own --dur/--dly/--len)
+     2. decorative ::before/::after gradient stacks
+     3. rules that reach into SVG or generated nodes
+     4. a transition whose duration is a runtime variable (--dwell)
+   Everything else lives in class attributes.
+   ============================================================ */
+@layer components {
+
+  /* ---------- reveal on scroll (ScrollReveal adds .in and sets an
+       inline transition-delay for stagger, so this stays one rule
+       rather than 40 copies of the same utility string) ---------- */
+  .rv    { opacity:0; transform:translateY(26px);
+           transition:opacity .85s var(--ease-brand), transform .85s var(--ease-brand) }
+  .rv.in { opacity:1; transform:none }
+
+  /* ---------- Zaymo side glow ----------
+     Two circle-clipped radial ellipses whose centres sit off-screen.
+     Only the outer shoulder shows, so it hugs the edge instead of
+     reading as a blob. No blur filter: all softness is the falloff.
+     Visible band = 70% width - 50% offset = 20vw per side.
+     The two sides breathe in antiphase (3s delay on a 6s loop). */
+  .glow i {
+    position:absolute; top:-20%; width:70%; height:120%;
+    border-radius:9999px;
+    background:radial-gradient(ellipse at center, rgba(255,94,0,.30) 0%, transparent 70%);
+    animation:var(--animate-breathe);
+  }
+  .glow i.l { left:-50% }
+  .glow i.r { right:-50%; animation-delay:3s;
+    background:radial-gradient(ellipse at center, rgba(254,140,90,.26) 0%, transparent 70%) }
+
+  /* ---------- hero ray burst ----------
+     Each ray sits in a group already rotated to its angle, so the stem
+     only has to scale along X and the head only has to travel along X.
+     Both are transform + opacity, which the compositor can run without
+     repainting. The nodes carry their own --dur/--dly/--o/--len, so
+     these cannot be utilities. */
+  .burst .stem {
+    fill:var(--color-orange);
+    transform-box:fill-box; transform-origin:left center;
+    animation:grow var(--dur) linear infinite;
+    animation-delay:var(--dly);
+    will-change:transform,opacity;
+  }
+  @keyframes grow {
+    0%   { transform:scaleX(0); opacity:0 }
+    6%   { opacity:var(--o) }
+    70%  { opacity:var(--o) }
+    100% { transform:scaleX(1); opacity:0 }
+  }
+  .burst .head {
+    fill:var(--color-orange);
+    transform-box:fill-box; transform-origin:center;
+    animation:ride var(--dur) linear infinite;
+    animation-delay:var(--dly);
+    will-change:transform,opacity;
+  }
+  @keyframes ride {
+    0%   { transform:translateX(0); opacity:0 }
+    6%   { opacity:var(--ho) }
+    70%  { opacity:var(--ho) }
+    100% { transform:translateX(var(--len)); opacity:0 }
+  }
+
+  /* ---------- the statement rail doubles as the autoplay clock:
+       the Problem component sets --dwell on #reck while it runs, so the
+       duration is a runtime value and cannot be a duration utility. Both
+       states live here because Tailwind's scale and translate utilities
+       write the `scale` and `translate` properties, which would stack on
+       top of this transform rather than replace it. ---------- */
+  .li-bar        { transform:scaleY(0); transform-origin:top;
+                   transition:transform .45s var(--ease-brand) }
+  .li.on .li-bar { transform:scaleY(1); transition:transform var(--dwell,.45s) linear }
+
+  /* ---------- OutboundOS dark block: two radial washes plus a
+       masked grid, stacked as pseudo-elements ---------- */
+  .os::before {
+    content:""; position:absolute; inset:0;
+    background:
+      radial-gradient(900px 380px at 12% -10%, rgba(255,94,0,.26), transparent 62%),
+      radial-gradient(700px 340px at 92% 110%, rgba(254,140,90,.17), transparent 64%);
+  }
+  .os::after {
+    content:""; position:absolute; inset:0; opacity:.45;
+    background-image:linear-gradient(rgba(255,255,255,.045) 1px,transparent 1px),
+                     linear-gradient(90deg,rgba(255,255,255,.045) 1px,transparent 1px);
+    background-size:60px 60px;
+    -webkit-mask-image:radial-gradient(ellipse 78% 62% at 50% 42%,#000,transparent);
+            mask-image:radial-gradient(ellipse 78% 62% at 50% 42%,#000,transparent);
+  }
+
+  /* ---------- hover glow behind the case-study cards ---------- */
+  .cs::after {
+    content:""; position:absolute; right:-70px; top:-70px;
+    width:180px; height:180px; border-radius:50%; opacity:0;
+    background:radial-gradient(circle,rgba(255,94,0,.10),transparent 68%);
+    transition:opacity .5s var(--ease-brand);
+  }
+  .cs:hover::after { opacity:1 }
+
+  /* ---------- pricing: faint vertical rules behind the cards ---------- */
+  .rules {
+    background-image:repeating-linear-gradient(90deg,
+      rgba(0,0,0,.05) 0 1px, transparent 1px calc(25% - 0px));
+    -webkit-mask-image:linear-gradient(180deg,transparent,#000 12%,#000 88%,transparent);
+            mask-image:linear-gradient(180deg,transparent,#000 12%,#000 88%,transparent);
+  }
+  @media (max-width:1180px) {
+    .rules { background-image:repeating-linear-gradient(90deg,
+      rgba(0,0,0,.05) 0 1px, transparent 1px calc(50% - 0px)) }
+  }
+
+  /* ---------- final CTA bloom ---------- */
+  .final::before {
+    content:""; position:absolute; left:50%; top:50%; transform:translate(-50%,-50%);
+    width:min(900px,92vw); height:440px; border-radius:50%;
+    background:radial-gradient(ellipse at center,rgba(255,94,0,.16),transparent 66%);
+    filter:blur(46px);
+  }
+
+  /* ---------- footer wash ---------- */
+  footer::before {
+    content:""; position:absolute; inset:0;
+    background:
+      radial-gradient(760px 320px at 8% 0%, rgba(255,94,0,.2), transparent 60%),
+      radial-gradient(620px 300px at 96% 100%, rgba(254,140,90,.14), transparent 62%);
+  }
+
+  /* ---- oversized wordmark (Santé mechanic) ----
+     Texture layer lightens the field. Wordmark is filled with the
+     UN-lightened base colour, so the letters read as a darker
+     silhouette. Glyphs overflow the band and crop at the page edge. */
+  .f-mark .tex {
+    background-image:radial-gradient(rgba(255,241,230,.9) 1.4px, transparent 1.5px),
+                     radial-gradient(rgba(255,241,230,.9) 1.4px, transparent 1.5px);
+    background-size:10px 10px;
+    background-position:0 0, 5px 5px;
+  }
+
+  /* ---------- on the black footer the dark half of the mark needs an
+       edge to read against (SVG-internal, reaches through <use>) ---------- */
+  .f-brand .brand-mark .sd-dark { fill:url(#sdDarkLift) }
+
+  /* ---------- below 1080px there is no second column, so the exhibit
+       renders inside the open line item; it needs air above it ---------- */
+  @media (max-width:1080px) { .li-slot #exh { margin-top:18px } }
+
+  /* ---------- reduced motion ---------- */
+  @media (prefers-reduced-motion:reduce) {
+    *   { animation:none !important; transition-duration:.01ms !important }
+    .rv { opacity:1; transform:none }
+    /* rays stay put at their resting opacity instead of animating in */
+    .burst .stem { opacity:var(--o) }
+    .burst .head { opacity:var(--ho) }
+  }
+}
+
+/* ---------- legal pages (privacy, terms) ----------
+   A plain document styled by element, so the policy text stays readable
+   in the component instead of carrying a class on every paragraph. */
+@layer components {
+  .legal h2 {
+    margin: 44px 0 12px;
+    font-size: clamp(20px, 2.2vw, 26px);
+    font-weight: 700;
+    letter-spacing: -0.025em;
+    scroll-margin-top: 90px;
+  }
+  .legal h2:first-of-type { margin-top: 0; }
+  .legal h3 {
+    margin: 22px 0 8px;
+    font-size: 16.5px;
+    font-weight: 650;
+    letter-spacing: -0.015em;
+  }
+  .legal p,
+  .legal li {
+    font-size: 15.5px;
+    line-height: 1.7;
+    color: var(--color-ink-3);
+  }
+  .legal p + p { margin-top: 12px; }
+  .legal ul,
+  .legal ol {
+    display: flex;
+    flex-direction: column;
+    gap: 7px;
+    margin: 10px 0 12px 22px;
+  }
+  .legal ul { list-style: disc; }
+  .legal ol { list-style: decimal; }
+  .legal b {
+    font-weight: 600;
+    color: var(--color-ink);
+  }
+  .legal mark {
+    padding: 1px 5px;
+    border-radius: 4px;
+    background: #fff1a8;
+    color: #5a4a00;
+    font-weight: 600;
+  }
+  .legal .box {
+    margin: 18px 0;
+    padding: 22px 24px;
+    border: 1px solid var(--color-line);
+    border-radius: var(--radius-lg);
+    background: #fff;
+  }
+  .legal .box p,
+  .legal .box li { font-size: 15px; }
+  .legal table {
+    width: 100%;
+    margin: 12px 0 6px;
+    border-collapse: collapse;
+    font-size: 14.5px;
+  }
+  .legal th {
+    padding: 0 0 8px;
+    border-bottom: 1px solid var(--color-line-2);
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.09em;
+    text-align: left;
+    text-transform: uppercase;
+    color: var(--color-ink-5);
+  }
+  .legal td {
+    padding: 10px 10px 10px 0;
+    border-bottom: 1px solid var(--color-line);
+    vertical-align: top;
+    line-height: 1.5;
+    color: var(--color-ink-3);
+  }
+  .legal td:first-child {
+    font-weight: 600;
+    white-space: nowrap;
+    color: var(--color-ink);
+  }
+}
+
+/* narrow screens: the legal table stacks into labelled rows instead of
+   squeezing three columns (the source clipped it) */
+@layer components {
+  @media (width < 640px) {
+    .legal table,
+    .legal tbody,
+    .legal tr,
+    .legal td { display: block; }
+    .legal thead { display: none; }
+    .legal tr {
+      padding: 12px 0;
+      border-bottom: 1px solid var(--color-line);
+    }
+    .legal td {
+      padding: 2px 0;
+      border: 0;
+    }
+    .legal td:first-child {
+      padding-bottom: 4px;
+      white-space: normal;
+    }
+    .legal td[data-label]::before {
+      content: attr(data-label) ": ";
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.09em;
+      text-transform: uppercase;
+      color: var(--color-ink-5);
+    }
+  }
 }
