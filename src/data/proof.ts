@@ -8,8 +8,6 @@ export type CaseStudy = {
   statLabel: string;
   story: string;
   result: string;
-  /** Placeholder client: name, tagline and logo are also sample content. */
-  sampleIdentity?: boolean;
 };
 
 const ZENMUL: ProofImage = {
@@ -22,14 +20,16 @@ const HASHTAGATIQ: ProofImage = {
   alt: "HashtagAtiq",
   size: 104,
 };
-const PLACEHOLDER: ProofImage = {
-  src: "/logos/placeholder.svg",
-  alt: "",
-  size: 38,
+const WODIFY: ProofImage = {
+  src: "/logos/wodify.svg",
+  alt: "Wodify",
+  size: 104,
 };
-
-const SAMPLE_STORY =
-  "A starting position in one line: where the pipeline came from before, and why it stopped scaling.";
+const HATIL: ProofImage = {
+  src: "/logos/hatil.svg",
+  alt: "HATIL",
+  size: 104,
+};
 
 export const CASE_STUDIES: CaseStudy[] = [
   {
@@ -52,26 +52,26 @@ export const CASE_STUDIES: CaseStudy[] = [
       "Cold outreach sent by hand between client projects, landing in promotions and getting no response.",
     result: "First meeting booked on day 9",
   },
-  // {
-  //   logo: PLACEHOLDER,
-  //   name: "Client three",
-  //   tagline: "what they do",
-  //   stat: "27",
-  //   statLabel: "meetings in 9 weeks",
-  //   story: SAMPLE_STORY,
-  //   result: "Optional second number",
-  //   sampleIdentity: true,
-  // },
-  // {
-  //   logo: PLACEHOLDER,
-  //   name: "Client four",
-  //   tagline: "what they do",
-  //   stat: "$184k",
-  //   statLabel: "pipeline sourced in 4 months",
-  //   story: SAMPLE_STORY,
-  //   result: "Optional second number",
-  //   sampleIdentity: true,
-  // },
+  {
+    logo: WODIFY,
+    name: "Wodify",
+    tagline: "Gym Management Software",
+    stat: "27",
+    statLabel: "meetings in 9 weeks",
+    story:
+      "A strong product with a crowded market, but no consistent outbound system to reach gym owners before competitors did.",
+    result: "22% of booked meetings reached proposal",
+  },
+  {
+    logo: HATIL,
+    name: "HATIL",
+    tagline: "Premium furniture for modern living",
+    stat: "$184k",
+    statLabel: "pipeline sourced in 4 months",
+    story:
+      "Most new business came through existing relationships, with no repeatable outbound process for reaching architects, developers, and commercial buyers.",
+    result: "31% of qualified opportunities reached proposal",
+  },
 ];
 
 export type Testimonial = {
