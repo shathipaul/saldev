@@ -76,7 +76,7 @@ export default function Proof() {
           lede={
             <>
               <b className="font-semibold text-ink">
-                Two quotes in, case studies still to come.
+                Four quotes in, case studies still to come.
               </b>{" "}
               B2B leaders who choose SalDev achieve results that no other agency
               can deliver.
