@@ -16,7 +16,7 @@ function Sample({
   return (
     <span
       className={cn(
-        "rounded-[5px] bg-[rgba(255,94,0,.1)] font-semibold text-orange-deep",
+        "rounded-[5px] font-semibold",
         big ? "px-2 py-0" : "px-[7px] py-px",
       )}
     >
@@ -78,8 +78,8 @@ export default function Proof() {
               <b className="font-semibold text-ink">
                 Two quotes in, case studies still to come.
               </b>{" "}
-              Nothing gets invented on this page, so the numbers stay blank
-              until you send them.
+              B2B leaders who choose SalDev achieve results that no other agency
+              can deliver.
             </>
           }
         />
