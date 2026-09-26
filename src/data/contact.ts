@@ -5,7 +5,7 @@ export const CONTACT_DESCRIPTION =
   "Twenty minutes. We map your ideal customer, your offer and the angles worth testing, and tell you straight if outbound won't work for you. Step 1 of the process.";
 
 /** Placeholder from the source site; swap for the real inbox before launch. */
-export const CONTACT_EMAIL = "hello@saldev.com";
+export const CONTACT_EMAIL = "info@saldev.io";
 
 export const CONTACT_STAMPS: HeroStamp[] = [
   { label: "You pay for", value: "meetings, not months" },
@@ -43,4 +43,8 @@ export const CALL_SECTIONS: CallSection[] = [
 ];
 
 /** Options for the "setup you're considering" select; the first is preselected. */
-export const SETUP_OPTIONS = ["Not sure yet", "Email setup, $1,500", "Multichannel setup, $2,500"];
+export const SETUP_OPTIONS = [
+  "Not sure yet",
+  "Email setup, $1,500",
+  "Multichannel setup, $2,500",
+];

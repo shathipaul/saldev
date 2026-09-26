@@ -22,10 +22,14 @@ const ITEMS: Array<{ title: string; body: ReactNode }> = [
     body: (
       <>
         The dated, step-by-step build is on the{" "}
-        <Link href="/how-it-works" className="font-semibold text-orange no-underline">
+        <Link
+          href="/how-it-works"
+          className="font-semibold text-orange no-underline"
+        >
           How it works
         </Link>{" "}
-        page, not behind a sales call, and you’ll see every tool in the stack at onboarding.
+        page, not behind a sales call, and you’ll see every tool in the stack at
+        onboarding.
       </>
     ),
   },
@@ -37,11 +41,13 @@ export default function JudgeTheWork() {
       <div className="mx-auto w-full max-w-page px-6">
         <SectionIntro
           eyebrow="Proof"
-          title="No logos yet. Judge the work instead."
+          title="Logos don't say much. Judge the work instead."
           lede={
             <>
-              <b className="font-semibold text-ink">No case studies, no client logos.</b> Four things we can show
-              you instead.
+              <b className="font-semibold text-ink">
+                No case studies, no client logos.
+              </b>{" "}
+              Four things we can show you instead.
             </>
           }
         />
@@ -49,9 +55,16 @@ export default function JudgeTheWork() {
         <div className="grid grid-cols-[1.05fr_.95fr] items-start gap-7 max-eq:grid-cols-1">
           <div className="rv flex flex-col">
             {ITEMS.map((item) => (
-              <div key={item.title} className="border-b border-line-2 py-[18px] first:pt-0">
-                <h3 className="mb-1.5 text-[17px] font-bold tracking-[-.015em]">{item.title}</h3>
-                <p className="text-[14.5px] leading-[1.6] text-ink-4">{item.body}</p>
+              <div
+                key={item.title}
+                className="border-b border-line-2 py-[18px] first:pt-0"
+              >
+                <h3 className="mb-1.5 text-[17px] font-bold tracking-[-.015em]">
+                  {item.title}
+                </h3>
+                <p className="text-[14.5px] leading-[1.6] text-ink-4">
+                  {item.body}
+                </p>
               </div>
             ))}
           </div>
@@ -64,7 +77,13 @@ export default function JudgeTheWork() {
               <b className="text-ink">Subject:</b> {SAMPLE_MESSAGE.subject}
             </p>
             {SAMPLE_MESSAGE.paragraphs.map((paragraph, i) => (
-              <p key={paragraph} className={cn("text-[15px] leading-[1.62] text-ink-2", i > 0 && "mt-3")}>
+              <p
+                key={paragraph}
+                className={cn(
+                  "text-[15px] leading-[1.62] text-ink-2",
+                  i > 0 && "mt-3",
+                )}
+              >
                 {paragraph}
               </p>
             ))}
