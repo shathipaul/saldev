@@ -2,9 +2,21 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { useCallback, useEffect, useState, useSyncExternalStore, type ReactNode } from "react";
+import {
+  useCallback,
+  useEffect,
+  useState,
+  useSyncExternalStore,
+  type ReactNode,
+} from "react";
 import BrandMark from "@/components/shared/BrandMark";
-import { ArrowIcon, DollarIcon, GridIcon, HelpIcon, PeopleIcon } from "@/components/shared/Icons";
+import {
+  ArrowIcon,
+  DollarIcon,
+  GridIcon,
+  HelpIcon,
+  PeopleIcon,
+} from "@/components/shared/Icons";
 import { cn } from "@/lib/cn";
 
 type NavLink = { label: string; href: string; icon: ReactNode };
@@ -12,7 +24,11 @@ type NavLink = { label: string; href: string; icon: ReactNode };
 const ICON = "size-[15px] shrink-0";
 
 const LINKS: NavLink[] = [
-  { label: "How it works", href: "/how-it-works", icon: <ArrowIcon className={ICON} strokeWidth={2.2} /> },
+  {
+    label: "How it works",
+    href: "/how-it-works",
+    icon: <ArrowIcon className={ICON} strokeWidth={2.2} />,
+  },
   { label: "Services", href: "/services", icon: <GridIcon className={ICON} /> },
   { label: "Pricing", href: "/pricing", icon: <DollarIcon className={ICON} /> },
   { label: "About", href: "/about", icon: <PeopleIcon className={ICON} /> },
@@ -64,7 +80,7 @@ export default function Navbar() {
         stuck && "stuck",
       )}
     >
-      <div className="mx-auto flex max-w-page items-center justify-between gap-5 px-6 py-3.5">
+      <div className="mx-auto flex max-w-page items-center justify-between gap-5 px-4 md:px-6 py-3.5">
         <Link
           href="/"
           className="group flex shrink-0 items-center gap-[9px] text-ink no-underline"
@@ -73,7 +89,9 @@ export default function Navbar() {
           <span className="brand-mark block size-8 shrink-0 transition-transform duration-[400ms] ease-brand group-hover:rotate-[-6deg] group-hover:scale-[1.06]">
             <BrandMark />
           </span>
-          <span className="text-[19px] font-bold tracking-[-.02em]">SalDev</span>
+          <span className="text-[19px] font-bold tracking-[-.02em]">
+            SalDev
+          </span>
         </Link>
 
         <nav aria-label="Primary">
@@ -124,7 +142,7 @@ export default function Navbar() {
         aria-hidden={!open}
         inert={!open}
         className={cn(
-          "pointer-events-none absolute inset-x-0 top-full flex translate-y-[-8px] flex-col gap-0.5 border-b border-line bg-[rgba(245,245,245,.97)] px-6 pt-2.5 pb-[18px] opacity-0 backdrop-blur-[14px] backdrop-saturate-[180%] transition-[opacity,transform] duration-300 ease-brand is-open:pointer-events-auto is-open:translate-y-0 is-open:opacity-100 cols:hidden",
+          "pointer-events-none absolute inset-x-0 top-full flex translate-y-[-8px] flex-col gap-0.5 border-b border-line bg-[rgba(245,245,245,.97)] px-4 md:px-6 pt-2.5 pb-[18px] opacity-0 backdrop-blur-[14px] backdrop-saturate-[180%] transition-[opacity,transform] duration-300 ease-brand is-open:pointer-events-auto is-open:translate-y-0 is-open:opacity-100 cols:hidden",
           open && "open",
         )}
       >

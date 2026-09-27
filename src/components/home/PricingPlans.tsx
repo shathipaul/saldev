@@ -3,7 +3,12 @@
 import Link from "next/link";
 import { useState } from "react";
 import { CheckIcon, InfoIcon } from "@/components/shared/Icons";
-import { COVERAGE, FEE_ROWS, SETUP_TAGS, type CoverageKey } from "@/data/pricing";
+import {
+  COVERAGE,
+  FEE_ROWS,
+  SETUP_TAGS,
+  type CoverageKey,
+} from "@/data/pricing";
 import { cn } from "@/lib/cn";
 import PlanArt from "./PlanArt";
 
@@ -33,7 +38,7 @@ export default function PricingPlans() {
       <div className="relative z-[1] grid grid-cols-[1fr_1.15fr] items-start gap-[18px] max-cols:grid-cols-1">
         <article className="rv relative flex flex-col overflow-hidden rounded-lg border border-line bg-white transition-[transform,box-shadow,border-color] duration-[450ms] ease-brand hover:-translate-y-[5px] hover:shadow-[0_24px_48px_-20px_rgba(0,0,0,.16)]">
           {/* head block, with the halftone artwork bleeding top-right */}
-          <div className="relative flex min-h-auto flex-col justify-start border-b border-line bg-white px-6 pt-6 pb-[22px]">
+          <div className="relative flex min-h-auto flex-col justify-start border-b border-line bg-white px-4 md:px-6 pt-6 pb-[22px]">
             <div
               className="plan-art pointer-events-none absolute top-[-4px] right-[-2px] size-28 mask-plan-art"
               aria-hidden="true"
@@ -52,22 +57,29 @@ export default function PricingPlans() {
             </p>
             <p className="relative mt-[15px] flex min-h-[34px] items-baseline gap-[5px]">
               <span className="text-[12.5px] font-medium text-ink-5">from</span>
-              <span className="text-[29px] font-bold tracking-[-.04em] text-ink">$1,500</span>
+              <span className="text-[29px] font-bold tracking-[-.04em] text-ink">
+                $1,500
+              </span>
               <span className="text-[13px] font-medium text-ink-5">once</span>
             </p>
           </div>
 
           <div className="flex-1 px-5 pt-5 pb-[22px] text-center">
-            <p className="mb-2.5 text-[12.5px] text-ink-5">Two setups. Pick by channel mix:</p>
+            <p className="mb-2.5 text-[12.5px] text-ink-5">
+              Two setups. Pick by channel mix:
+            </p>
             <p className="mb-2 text-[13.5px] leading-normal text-ink-2">
-              <b>Email setup, $1,500 once.</b> Cold email only. 10 sending domains and 30 inboxes,
-              bought in your name and warmed.
+              <b>Email setup, $1,500 once.</b> Cold email only. 10 sending
+              domains and 30 inboxes, bought in your name and warmed.
             </p>
             <p className="mb-[18px] text-[13.5px] leading-normal text-ink-2">
-              <b>Multichannel setup, $2,500 once.</b> Email, LinkedIn and X together. 25 domains
-              and 75 inboxes, plus one LinkedIn profile and one X profile run for you.
+              <b>Multichannel setup, $2,500 once.</b> Email, LinkedIn and X
+              together. 25 domains and 75 inboxes, plus one LinkedIn profile and
+              one X profile run for you.
             </p>
-            <p className="mb-3.5 text-[12.5px] text-ink-5">What the build covers:</p>
+            <p className="mb-3.5 text-[12.5px] text-ink-5">
+              What the build covers:
+            </p>
             <div className="flex flex-wrap justify-center gap-[7px]">
               {SETUP_TAGS.map((tag) => (
                 <button
@@ -98,8 +110,9 @@ export default function PricingPlans() {
             Then, per meeting and per deal
           </h3>
           <p className="mb-5 text-[13.6px] leading-normal text-ink-4">
-            No monthly retainer. After the build, you pay when a qualified meeting lands on your
-            calendar, and a share of the revenue those meetings close. Nothing else.
+            No monthly retainer. After the build, you pay when a qualified
+            meeting lands on your calendar, and a share of the revenue those
+            meetings close. Nothing else.
           </p>
           <table className="w-full border-collapse">
             <thead>
@@ -123,7 +136,12 @@ export default function PricingPlans() {
                 const last = i === FEE_ROWS.length - 1;
                 return (
                   <tr key={row.item}>
-                    <td className={cn("py-[13px] text-[14.6px] text-ink-3", !last && "border-b border-line")}>
+                    <td
+                      className={cn(
+                        "py-[13px] text-[14.6px] text-ink-3",
+                        !last && "border-b border-line",
+                      )}
+                    >
                       {row.item}
                     </td>
                     <td
@@ -140,12 +158,14 @@ export default function PricingPlans() {
             </tbody>
           </table>
           <p className="mt-4 text-[13px] leading-normal text-ink-5">
-            A meeting counts only if it fits the ICP we agreed and the prospect shows up. If someone
-            no-shows we chase the rebook: attend within 14 days and it is billable, otherwise you are
-            not invoiced. Prospects outside the agreed profile are never billed, and you can reject a
-            meeting within 5 business days if it clearly misses the written criteria. The 10% is on
-            first-year contract value for deals that close within 12 months of the meeting, paid
-            monthly as you collect the cash; if a customer churns or refunds inside 90 days, it comes
+            A meeting counts only if it fits the ICP we agreed and the prospect
+            shows up. If someone no-shows we chase the rebook: attend within 14
+            days and it is billable, otherwise you are not invoiced. Prospects
+            outside the agreed profile are never billed, and you can reject a
+            meeting within 5 business days if it clearly misses the written
+            criteria. The 10% is on first-year contract value for deals that
+            close within 12 months of the meeting, paid monthly as you collect
+            the cash; if a customer churns or refunds inside 90 days, it comes
             back off the next invoice.
           </p>
           <div className={BADGE}>
@@ -181,9 +201,9 @@ export default function PricingPlans() {
       </div>
 
       <p className="rv relative z-[1] mt-[22px] text-center text-[13.5px] text-ink-5">
-        Domains, inboxes, and tools are bought in your name and we carry their running cost after
-        the build, so there is no monthly bill. You own the domains, lists, copy and playbook from
-        day one.
+        Domains, inboxes, and tools are bought in your name and we carry their
+        running cost after the build, so there is no monthly bill. You own the
+        domains, lists, copy and playbook from day one.
       </p>
     </>
   );

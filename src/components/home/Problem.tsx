@@ -1,6 +1,13 @@
 "use client";
 
-import { useCallback, useEffect, useRef, useState, type KeyboardEvent, type ReactNode } from "react";
+import {
+  useCallback,
+  useEffect,
+  useRef,
+  useState,
+  type KeyboardEvent,
+  type ReactNode,
+} from "react";
 import { ClockIcon, DollarIcon, WarnIcon } from "@/components/shared/Icons";
 import SectionIntro from "@/components/shared/SectionIntro";
 import { REDUCED_MOTION, useMediaQuery } from "@/hooks/useMediaQuery";
@@ -10,9 +17,16 @@ import type { CSSVars } from "@/lib/style";
 /** How long each line item stays open while the section runs on its own. */
 const DWELL_MS = 5200;
 
-type Line = { n: string; title: string; cost: string; icon: ReactNode; body: string };
+type Line = {
+  n: string;
+  title: string;
+  cost: string;
+  icon: ReactNode;
+  body: string;
+};
 
-const COST_ICON = "size-3.5 text-ink-5 transition-colors duration-[350ms] ease-brand group-[.on]:text-orange";
+const COST_ICON =
+  "size-3.5 text-ink-5 transition-colors duration-[350ms] ease-brand group-[.on]:text-orange";
 
 const LINES: Line[] = [
   {
@@ -63,15 +77,31 @@ function SendLogArt() {
           <i className="block size-[7px] rounded-full bg-[#DEDEDE]" />
           <i className="block size-[7px] rounded-full bg-[#DEDEDE]" />
           <i className="block size-[7px] rounded-full bg-[#DEDEDE]" />
-          <span className="ml-[7px] font-mono text-[10.5px] tracking-[.05em] text-ink-5">outbox · 12:47 AM</span>
+          <span className="ml-[7px] font-mono text-[10.5px] tracking-[.05em] text-ink-5">
+            outbox · 12:47 AM
+          </span>
         </div>
         <div className="py-[7px]">
           {SEND_ROWS.map((row) => (
-            <div key={row.time} className="flex items-center gap-2.5 px-3 py-[5px]">
-              <span className={cn("w-9 flex-none font-mono text-[10.5px]", row.reply ? "text-orange-soft" : "text-[#B8B8B8]")}>
+            <div
+              key={row.time}
+              className="flex items-center gap-2.5 px-3 py-[5px]"
+            >
+              <span
+                className={cn(
+                  "w-9 flex-none font-mono text-[10.5px]",
+                  row.reply ? "text-orange-soft" : "text-[#B8B8B8]",
+                )}
+              >
                 {row.time}
               </span>
-              <span className={cn("h-1.5 flex-1 rounded-[3px]", row.width, row.reply ? "bg-orange-tint" : "bg-[#EDEDED]")} />
+              <span
+                className={cn(
+                  "h-1.5 flex-1 rounded-[3px]",
+                  row.width,
+                  row.reply ? "bg-orange-tint" : "bg-[#EDEDED]",
+                )}
+              />
               <span
                 className={cn(
                   "w-[26px] flex-none text-right font-mono text-[10px]",
@@ -86,11 +116,21 @@ function SendLogArt() {
       </div>
       <div className="mt-3.5 flex overflow-hidden rounded-[10px] border border-line bg-white">
         {SEND_TOTALS.map(([value, label, hot]) => (
-          <div key={label} className="flex-1 border-r border-line px-2 py-2.5 text-center last:border-r-0">
-            <b className={cn("block text-[16px] leading-[1.2] font-bold tracking-[-.028em]", hot ? "text-orange" : "text-ink")}>
+          <div
+            key={label}
+            className="flex-1 border-r border-line px-2 py-2.5 text-center last:border-r-0"
+          >
+            <b
+              className={cn(
+                "block text-[16px] leading-[1.2] font-bold tracking-[-.028em]",
+                hot ? "text-orange" : "text-ink",
+              )}
+            >
               {value}
             </b>
-            <span className="mt-[3px] block font-mono text-[9px] tracking-[.09em] text-ink-5 uppercase">{label}</span>
+            <span className="mt-[3px] block font-mono text-[9px] tracking-[.09em] text-ink-5 uppercase">
+              {label}
+            </span>
           </div>
         ))}
       </div>
@@ -127,10 +167,17 @@ function SpamVerdictArt() {
       </div>
       <div className="mt-4">
         <div className="mb-[5px] flex items-baseline justify-between font-mono text-[9.5px] tracking-[.09em] text-ink-5 uppercase">
-          <b className="text-[11px] font-medium tracking-normal text-ink-3 normal-case">yourdomain.com</b>
+          <b className="text-[11px] font-medium tracking-normal text-ink-3 normal-case">
+            yourdomain.com
+          </b>
           <span>sending reputation</span>
         </div>
-        <svg viewBox="0 0 320 104" fill="none" aria-hidden="true" className="block h-auto w-full">
+        <svg
+          viewBox="0 0 320 104"
+          fill="none"
+          aria-hidden="true"
+          className="block h-auto w-full"
+        >
           <defs>
             <linearGradient id="cliffG" x1="0" y1="0" x2="0" y2="1">
               <stop offset="0%" stopColor="#FF5E00" stopOpacity=".22" />
@@ -148,7 +195,14 @@ function SpamVerdictArt() {
             strokeLinecap="round"
             strokeLinejoin="round"
           />
-          <circle cx="211" cy="24" r="4.6" fill="#FFFFFF" stroke="#FF5E00" strokeWidth="2.1" />
+          <circle
+            cx="211"
+            cy="24"
+            r="4.6"
+            fill="#FFFFFF"
+            stroke="#FF5E00"
+            strokeWidth="2.1"
+          />
         </svg>
         <div className="mt-[5px] flex justify-between border-t border-line pt-1.5 font-mono text-[9.5px] tracking-[.07em] text-ink-5 uppercase">
           <span>years to earn</span>
@@ -159,22 +213,38 @@ function SpamVerdictArt() {
   );
 }
 
-const RAMP_BARS = ["h-[15%]", "h-[29%]", "h-[43%]", "h-[57%]", "h-[71%]", "h-[86%]"];
+const RAMP_BARS = [
+  "h-[15%]",
+  "h-[29%]",
+  "h-[43%]",
+  "h-[57%]",
+  "h-[71%]",
+  "h-[86%]",
+];
 const RAMP_MONTHS = ["M1", "M2", "M3", "M4", "M5", "M6", "M7"];
 
 function RampArt() {
   return (
     <>
       <div className="mb-0.5 flex items-baseline gap-[9px]">
-        <b className="text-[22px] font-bold tracking-[-.035em] text-ink">$70–85k</b>
-        <span className="text-[12px] font-medium text-ink-4">on target earnings</span>
+        <b className="text-[22px] font-bold tracking-[-.035em] text-ink">
+          $70–85k
+        </b>
+        <span className="text-[12px] font-medium text-ink-4">
+          on target earnings
+        </span>
       </div>
-      <p className="mb-[18px] text-[12px] text-ink-4">Paid out month by month, whether or not anything lands.</p>
+      <p className="mb-[18px] text-[12px] text-ink-4">
+        Paid out month by month, whether or not anything lands.
+      </p>
       <div className="relative flex h-[118px] items-end gap-[7px]">
         {RAMP_BARS.map((height) => (
           <i
             key={height}
-            className={cn("block flex-1 rounded-t bg-[linear-gradient(180deg,var(--color-orange-pale),var(--color-orange-soft))]", height)}
+            className={cn(
+              "block flex-1 rounded-t bg-[linear-gradient(180deg,var(--color-orange-pale),var(--color-orange-soft))]",
+              height,
+            )}
           />
         ))}
         <i className="block h-full flex-1 rounded-t bg-[linear-gradient(180deg,var(--color-orange-soft),var(--color-orange))]" />
@@ -197,9 +267,21 @@ function RampArt() {
 type Exhibit = { label: string; caption: string; art: ReactNode };
 
 const EXHIBITS: Exhibit[] = [
-  { label: "Exhibit 01", caption: "Week three, 12:47 a.m.", art: <SendLogArt /> },
-  { label: "Exhibit 02", caption: "Your domain, one month later", art: <SpamVerdictArt /> },
-  { label: "Exhibit 03", caption: "What you spend before you know", art: <RampArt /> },
+  {
+    label: "Exhibit 01",
+    caption: "Week three, 12:47 a.m.",
+    art: <SendLogArt />,
+  },
+  {
+    label: "Exhibit 02",
+    caption: "Your domain, one month later",
+    art: <SpamVerdictArt />,
+  },
+  {
+    label: "Exhibit 03",
+    caption: "What you spend before you know",
+    art: <RampArt />,
+  },
 ];
 
 /** The artifacts stack in one grid cell, so the stage takes the height of the
@@ -259,9 +341,12 @@ export default function Problem() {
   useEffect(() => {
     const el = reckRef.current;
     if (!el) return;
-    const observer = new IntersectionObserver(([entry]) => setSeen(entry.isIntersecting), {
-      threshold: 0.35,
-    });
+    const observer = new IntersectionObserver(
+      ([entry]) => setSeen(entry.isIntersecting),
+      {
+        threshold: 0.35,
+      },
+    );
     observer.observe(el);
     return () => observer.disconnect();
   }, []);
@@ -269,7 +354,10 @@ export default function Problem() {
   // the clock: re-armed after every change of line
   useEffect(() => {
     if (!autoplay || !seen) return;
-    const timer = window.setTimeout(() => setCurrent((c) => (c + 1) % LINES.length), DWELL_MS);
+    const timer = window.setTimeout(
+      () => setCurrent((c) => (c + 1) % LINES.length),
+      DWELL_MS,
+    );
     return () => window.clearTimeout(timer);
   }, [autoplay, seen, current]);
 
@@ -279,27 +367,29 @@ export default function Problem() {
   }, []);
 
   const onPointerEnter = (index: number) => () => {
-    if (window.matchMedia("(hover: hover) and (pointer: fine)").matches) select(index);
+    if (window.matchMedia("(hover: hover) and (pointer: fine)").matches)
+      select(index);
   };
 
-  const onKeyDown = (index: number) => (event: KeyboardEvent<HTMLButtonElement>) => {
-    const delta =
-      event.key === "ArrowDown" || event.key === "ArrowRight"
-        ? 1
-        : event.key === "ArrowUp" || event.key === "ArrowLeft"
-          ? -1
-          : 0;
-    if (!delta) return;
-    event.preventDefault();
-    setUserTookOver(true);
-    headRefs.current[(index + delta + LINES.length) % LINES.length]?.focus();
-  };
+  const onKeyDown =
+    (index: number) => (event: KeyboardEvent<HTMLButtonElement>) => {
+      const delta =
+        event.key === "ArrowDown" || event.key === "ArrowRight"
+          ? 1
+          : event.key === "ArrowUp" || event.key === "ArrowLeft"
+            ? -1
+            : 0;
+      if (!delta) return;
+      event.preventDefault();
+      setUserTookOver(true);
+      headRefs.current[(index + delta + LINES.length) % LINES.length]?.focus();
+    };
 
   const exhibit = <ExhibitFigure current={current} />;
 
   return (
     <section id="problem" className="relative z-[1] py-24 max-cols:py-[70px]">
-      <div className="mx-auto w-full max-w-page px-6">
+      <div className="mx-auto w-full max-w-page px-4 md:px-6">
         <div
           id="reck"
           ref={reckRef}
@@ -316,8 +406,11 @@ export default function Problem() {
               title="A quiet calendar has three usual fixes."
               lede={
                 <>
-                  <b className="font-semibold text-ink">All three send you a bill.</b> Founders cycle
-                  through them in roughly this order, and land in the same place each time.
+                  <b className="font-semibold text-ink">
+                    All three send you a bill.
+                  </b>{" "}
+                  Founders cycle through them in roughly this order, and land in
+                  the same place each time.
                 </>
               }
             />
@@ -327,7 +420,7 @@ export default function Problem() {
           {/* RIGHT: the statement */}
           <div className="rv flex self-stretch max-split:mt-[26px]">
             <div className="flex flex-1 flex-col overflow-hidden rounded-lg border border-line bg-white shadow-[0_30px_66px_-50px_rgba(0,0,0,.6)]">
-              <div className="flex items-center justify-between gap-3.5 border-b border-line bg-[linear-gradient(180deg,#FCFCFC,#FFFFFF)] px-6 py-[15px] font-mono text-[10.5px] tracking-[.12em] text-ink-5 uppercase max-phone:px-[18px] max-phone:py-[13px] max-phone:text-[9.5px] max-phone:tracking-[.1em]">
+              <div className="flex items-center justify-between gap-3.5 border-b border-line bg-[linear-gradient(180deg,#FCFCFC,#FFFFFF)] px-4 md:px-6 py-[15px] font-mono text-[10.5px] tracking-[.12em] text-ink-5 uppercase max-phone:px-[18px] max-phone:py-[13px] max-phone:text-[9.5px] max-phone:tracking-[.1em]">
                 <b className="font-medium text-ink-3">Statement of charges</b>
                 <span>3 line items</span>
               </div>
@@ -342,14 +435,23 @@ export default function Problem() {
                   const on = i === current;
                   const panelId = `line-${i + 1}`;
                   return (
-                    <li key={line.n} className={cn("li group relative border-b border-line bg-white", on && "on")}>
-                      <i className="li-bar absolute inset-y-0 left-0 w-[3px] bg-orange" aria-hidden="true" />
+                    <li
+                      key={line.n}
+                      className={cn(
+                        "li group relative border-b border-line bg-white",
+                        on && "on",
+                      )}
+                    >
+                      <i
+                        className="li-bar absolute inset-y-0 left-0 w-[3px] bg-orange"
+                        aria-hidden="true"
+                      />
                       <button
                         type="button"
                         ref={(el) => {
                           headRefs.current[i] = el;
                         }}
-                        className="li-hd flex w-full cursor-pointer items-center gap-3.5 border-0 bg-none px-6 py-[30px] text-left text-inherit transition-colors duration-[350ms] ease-brand group-hover:bg-[#FCFBFA] focus-visible:outline-2 focus-visible:-outline-offset-[3px] focus-visible:outline-orange max-phone:flex-wrap max-phone:gap-2.5 max-phone:px-[18px] max-phone:py-5"
+                        className="li-hd flex w-full cursor-pointer items-center gap-3.5 border-0 bg-none px-4 md:px-6 py-[30px] text-left text-inherit transition-colors duration-[350ms] ease-brand group-hover:bg-[#FCFBFA] focus-visible:outline-2 focus-visible:-outline-offset-[3px] focus-visible:outline-orange max-phone:flex-wrap max-phone:gap-2.5 max-phone:px-[18px] max-phone:py-5"
                         aria-expanded={on}
                         aria-controls={panelId}
                         onClick={() => select(i)}
@@ -391,7 +493,9 @@ export default function Problem() {
               </ul>
 
               <div className="flex items-baseline justify-between gap-[18px] bg-ink p-6 text-white max-phone:flex-col max-phone:items-start max-phone:gap-2 max-phone:px-[18px] max-phone:py-5">
-                <span className="flex-none font-mono text-[10.5px] tracking-[.13em] text-white/48 uppercase">Total due</span>
+                <span className="flex-none font-mono text-[10.5px] tracking-[.13em] text-white/48 uppercase">
+                  Total due
+                </span>
                 <span className="text-right text-[clamp(16.5px,1.9vw,21px)] font-semi tracking-[-.028em] max-phone:text-left">
                   A calendar that stays quiet
                 </span>

@@ -14,7 +14,9 @@ function FounderCard({ founder }: { founder: Founder }) {
           {founder.monogram}
         </span>
         <div>
-          <h3 className="text-[20px] leading-[1.2] font-bold tracking-[-.028em] text-ink">{founder.name}</h3>
+          <h3 className="text-[20px] leading-[1.2] font-bold tracking-[-.028em] text-ink">
+            {founder.name}
+          </h3>
           <span className="mt-[5px] block font-mono text-[11px] tracking-[.07em] text-orange uppercase">
             {founder.role}
           </span>
@@ -22,7 +24,14 @@ function FounderCard({ founder }: { founder: Founder }) {
       </div>
 
       {founder.paragraphs.map((paragraph, i) => (
-        <p key={i} className={i > 0 ? "mt-3 text-[15.5px] leading-[1.64] text-ink-4" : "text-[15.5px] leading-[1.64] text-ink-4"}>
+        <p
+          key={i}
+          className={
+            i > 0
+              ? "mt-3 text-[15.5px] leading-[1.64] text-ink-4"
+              : "text-[15.5px] leading-[1.64] text-ink-4"
+          }
+        >
           {paragraph}
         </p>
       ))}
@@ -32,18 +41,26 @@ function FounderCard({ founder }: { founder: Founder }) {
           <span className="mb-[7px] block font-mono text-[9.5px] tracking-[.12em] text-orange uppercase">
             {founder.rule.label}
           </span>
-          <p className="text-[16px] leading-[1.5] font-semibold tracking-[-.018em] text-ink">{founder.rule.text}</p>
+          <p className="text-[16px] leading-[1.5] font-semibold tracking-[-.018em] text-ink">
+            {founder.rule.text}
+          </p>
         </div>
       ) : null}
 
       <ul className="mt-[22px] list-none border-t border-line pt-5">
         {founder.facts.map((fact) => (
-          <li key={fact.label} className="flex items-baseline gap-3 py-1.5 text-[14px] text-ink-4">
+          <li
+            key={fact.label}
+            className="flex items-baseline gap-3 py-1.5 text-[14px] text-ink-4"
+          >
             <b className="w-24 flex-none font-mono text-[11px] font-medium tracking-[.06em] text-ink-5 uppercase max-phone:w-[76px]">
               {fact.label}
             </b>
             <span className="min-w-0 flex-1">
-              <RichText runs={fact.value} emphasisClassName="font-semibold text-ink not-italic" />
+              <RichText
+                runs={fact.value}
+                emphasisClassName="font-semibold text-ink not-italic"
+              />
             </span>
           </li>
         ))}
@@ -55,14 +72,15 @@ function FounderCard({ founder }: { founder: Founder }) {
 export default function Team() {
   return (
     <section id="team" className="relative z-[1] py-24 max-cols:py-[70px]">
-      <div className="mx-auto w-full max-w-page px-6">
+      <div className="mx-auto w-full max-w-page px-4 md:px-6">
         <SectionIntro
           eyebrow="The two of us"
           title="You will always know who is sending your emails."
           lede={
             <>
               <b className="font-semibold text-ink">
-                No junior, no pod, no account manager standing between you and the work.
+                No junior, no pod, no account manager standing between you and
+                the work.
               </b>{" "}
               The person who pitched you is the person writing your sequences.
             </>
@@ -75,7 +93,7 @@ export default function Team() {
           ))}
         </div>
 
-        <div className="rv mt-[18px] flex flex-wrap items-center gap-4 rounded-lg border border-line bg-white px-6 py-5 max-phone:p-[18px]">
+        <div className="rv mt-[18px] flex flex-wrap items-center gap-4 rounded-lg border border-line bg-white px-4 md:px-6 py-5 max-phone:p-[18px]">
           <span
             className="grid size-10 flex-none place-items-center rounded-xl border border-orange-pale bg-[rgba(255,94,0,.09)]"
             aria-hidden="true"
@@ -93,12 +111,18 @@ export default function Team() {
             </svg>
           </span>
           <p className="min-w-[230px] flex-1 text-[15.5px] leading-[1.55] text-ink-4">
-            <b className="font-semibold text-ink">Dhaka and Kuwait, working United States hours.</b> That
-            means your whole working day, not a two-hour overlap in your morning. A reply that lands at
-            10am your time gets handled at 10am your time.
+            <b className="font-semibold text-ink">
+              Dhaka and Kuwait, working United States hours.
+            </b>{" "}
+            That means your whole working day, not a two-hour overlap in your
+            morning. A reply that lands at 10am your time gets handled at 10am
+            your time.
           </p>
           <span className="flex flex-none items-center gap-2 font-mono text-[11px] tracking-[.08em] text-ink-5 uppercase max-phone:w-full">
-            <i className="block size-1.5 animate-pulse-ring rounded-full bg-orange shadow-[0_0_0_3px_rgba(255,94,0,.18)]" aria-hidden="true" />
+            <i
+              className="block size-1.5 animate-pulse-ring rounded-full bg-orange shadow-[0_0_0_3px_rgba(255,94,0,.18)]"
+              aria-hidden="true"
+            />
             US hours, always
           </span>
         </div>

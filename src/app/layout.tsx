@@ -102,6 +102,13 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       className={`${inter.variable} ${jetbrainsMono.variable} scroll-smooth scroll-pt-[70px]`}
     >
       <body className="relative overflow-x-hidden bg-bg font-sans leading-normal text-ink antialiased">
+        {/* Below the hero, sections reveal on scroll from JavaScript. With
+            scripting off there is nothing to add `.in`, so unhide them rather
+            than serve a page that is blank past the first screen. */}
+        <noscript
+          dangerouslySetInnerHTML={{ __html: "<style>.rv{opacity:1;transform:none}</style>" }}
+        />
+
         {/* SalDev mark (seam-3d), defined once, referenced everywhere via <use> */}
         <BrandMarkDefs />
 

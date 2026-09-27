@@ -23,7 +23,10 @@ function FaqEntry({ item, open, onToggle, className }: EntryProps) {
 
   return (
     <div
-      className={cn("q rv group border-b border-line-2 first:border-t first:border-t-line-2", className)}
+      className={cn(
+        "q rv group border-b border-line-2 first:border-t first:border-t-line-2",
+        className,
+      )}
       data-open={open ? "" : undefined}
     >
       <h3 className="text-[16.5px] leading-[1.4] font-semibold tracking-[-.018em] text-ink">
@@ -65,7 +68,10 @@ function FaqEntry({ item, open, onToggle, className }: EntryProps) {
           {item.answer.map((paragraph, p) => (
             <p
               key={p}
-              className={cn("pt-0 pr-[34px] pb-[26px] pl-1 text-[15px] leading-[1.68] text-ink-4", p > 0 && "mt-3")}
+              className={cn(
+                "pt-0 pr-[34px] pb-[26px] pl-1 text-[15px] leading-[1.68] text-ink-4",
+                p > 0 && "mt-3",
+              )}
             >
               {paragraph.map((segment, s) =>
                 typeof segment === "string" ? (
@@ -89,7 +95,7 @@ export default function FAQ() {
 
   return (
     <section id="faq" className="relative z-[1] py-24 max-cols:py-[70px]">
-      <div className="mx-auto w-full max-w-page px-6">
+      <div className="mx-auto w-full max-w-page px-4 md:px-6">
         <SectionIntro
           align="center"
           titleMax="max-w-[20ch]"
@@ -105,7 +111,11 @@ export default function FAQ() {
                   key={item.id}
                   item={item}
                   open={openId === item.id}
-                  onToggle={() => setOpenId((current) => (current === item.id ? null : item.id))}
+                  onToggle={() =>
+                    setOpenId((current) =>
+                      current === item.id ? null : item.id,
+                    )
+                  }
                   className={c === 1 ? "max-faq:first:border-t-0" : undefined}
                 />
               ))}

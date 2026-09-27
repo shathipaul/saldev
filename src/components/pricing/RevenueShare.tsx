@@ -13,15 +13,22 @@ const STEP = [
 
 export default function RevenueShare() {
   return (
-    <section id="revenue-share" className="relative z-[1] py-24" aria-labelledby="revenue-title">
-      <div className="mx-auto w-full max-w-page px-6">
+    <section
+      id="revenue-share"
+      className="relative z-[1] py-24"
+      aria-labelledby="revenue-title"
+    >
+      <div className="mx-auto w-full max-w-page px-4 md:px-6">
         <SectionIntro
           eyebrow="The 10%"
           title="How the revenue share works, step by step."
           lede={
             <>
-              <b className="font-semibold text-ink">It only applies to deals that started with a meeting we booked.</b>{" "}
-              First-year value only, paid as you collect, and credited back if the customer leaves early.
+              <b className="font-semibold text-ink">
+                It only applies to deals that started with a meeting we booked.
+              </b>{" "}
+              First-year value only, paid as you collect, and credited back if
+              the customer leaves early.
             </>
           }
         />
@@ -31,7 +38,10 @@ export default function RevenueShare() {
             {REVENUE_STEPS.map((step, i) => (
               <li
                 key={step.title}
-                className={cn("border-t border-line py-[18px] sm:border-t-0 sm:py-0", STEP[i])}
+                className={cn(
+                  "border-t border-line py-[18px] sm:border-t-0 sm:py-0",
+                  STEP[i],
+                )}
               >
                 <span
                   className="mb-2.5 inline-flex size-[30px] items-center justify-center rounded-full border border-orange-pale bg-orange/5 font-mono text-[12px] font-medium text-orange sm:mb-3.5"
@@ -39,8 +49,12 @@ export default function RevenueShare() {
                 >
                   {String(i + 1).padStart(2, "0")}
                 </span>
-                <h3 className="mb-1.5 text-[15.5px] leading-[1.35] font-semibold tracking-[-.015em] text-ink">{step.title}</h3>
-                <p className="text-[13.8px] leading-[1.55] text-ink-4">{step.body}</p>
+                <h3 className="mb-1.5 text-[15.5px] leading-[1.35] font-semibold tracking-[-.015em] text-ink">
+                  {step.title}
+                </h3>
+                <p className="text-[13.8px] leading-[1.55] text-ink-4">
+                  {step.body}
+                </p>
               </li>
             ))}
           </ol>
@@ -50,14 +64,16 @@ export default function RevenueShare() {
               Example, invented numbers, not a forecast
             </span>
             <p className="text-[14.5px] leading-[1.65] text-ink-4">
-              Say a deal closes at <b className="font-semibold text-ink">$12,000</b> first-year value,
-              four months after a meeting we booked. The share is{" "}
+              Say a deal closes at{" "}
+              <b className="font-semibold text-ink">$12,000</b> first-year
+              value, four months after a meeting we booked. The share is{" "}
               <code className="rounded-[5px] bg-orange/8 px-1.5 py-px font-mono text-[13px] text-ink">
                 10% × $12,000 = $1,200
               </code>
-              , paid to us in the months you collect that money. If that customer churned inside 90
-              days, the $1,200 would be credited back on the next invoice. Your deals will not look
-              like this one; the point is the shape of the rule.
+              , paid to us in the months you collect that money. If that
+              customer churned inside 90 days, the $1,200 would be credited back
+              on the next invoice. Your deals will not look like this one; the
+              point is the shape of the rule.
             </p>
           </div>
         </div>

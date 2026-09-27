@@ -1,5 +1,9 @@
 import Link from "next/link";
-import { BTN_GRADIENT, BTN_PRIMARY, BTN_SECONDARY } from "@/components/shared/buttons";
+import {
+  BTN_GRADIENT,
+  BTN_PRIMARY,
+  BTN_SECONDARY,
+} from "@/components/shared/buttons";
 import { ArrowIcon, CheckIcon } from "@/components/shared/Icons";
 import { Eyebrow } from "@/components/shared/SectionIntro";
 import { cn } from "@/lib/cn";
@@ -34,24 +38,41 @@ export default function FinalCTA({
 }: Props) {
   const titleId = `${id}-title`;
   return (
-    <section id={id} className="final relative z-[1] overflow-hidden py-[100px] text-center" aria-labelledby={titleId}>
-      <div className="mx-auto w-full max-w-page px-6">
+    <section
+      id={id}
+      className="final relative z-[1] overflow-hidden py-[100px] text-center"
+      aria-labelledby={titleId}
+    >
+      <div className="mx-auto w-full max-w-page px-4 md:px-6">
         <div className="relative z-[2]">
-          {eyebrow ? <Eyebrow className="rv mb-[18px]">{eyebrow}</Eyebrow> : null}
+          {eyebrow ? (
+            <Eyebrow className="rv mb-[18px]">{eyebrow}</Eyebrow>
+          ) : null}
           <h2
             id={titleId}
             className="rv mx-auto mb-[18px] max-w-[18ch] text-[clamp(32px,5vw,58px)] leading-[1.04] font-bold tracking-[-.04em]"
           >
             {title}
           </h2>
-          <p className="rv mx-auto mb-[30px] max-w-[56ch] text-[17.5px] leading-[1.58] text-ink-4">{body}</p>
+          <p className="rv mx-auto mb-[30px] max-w-[56ch] text-[17.5px] leading-[1.58] text-ink-4">
+            {body}
+          </p>
           <div className="rv flex flex-wrap justify-center gap-3 max-mini:flex-col">
-            <Link href="/contact" className={cn(gradient ? BTN_GRADIENT : BTN_PRIMARY, "group max-mini:w-full")}>
+            <Link
+              href="/contact"
+              className={cn(
+                gradient ? BTN_GRADIENT : BTN_PRIMARY,
+                "group max-mini:w-full",
+              )}
+            >
               Book a 20-min call
               <ArrowIcon className="size-[15px] transition-transform duration-300 ease-brand group-hover:translate-x-1" />
             </Link>
             {secondary ? (
-              <Link href={secondary.href} className={cn(BTN_SECONDARY, "max-mini:w-full")}>
+              <Link
+                href={secondary.href}
+                className={cn(BTN_SECONDARY, "max-mini:w-full")}
+              >
                 {secondary.label}
               </Link>
             ) : null}

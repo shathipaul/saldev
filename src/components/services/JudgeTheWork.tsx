@@ -38,7 +38,7 @@ const ITEMS: Array<{ title: string; body: ReactNode }> = [
 export default function JudgeTheWork() {
   return (
     <section id="proof" className="relative z-[1] py-24 max-cols:py-[70px]">
-      <div className="mx-auto w-full max-w-page px-6">
+      <div className="mx-auto w-full max-w-page px-4 md:px-6">
         <SectionIntro
           eyebrow="Proof"
           title="Logos don't say much. Judge the work instead."

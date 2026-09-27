@@ -5,7 +5,14 @@ import { ArrowIcon, CheckIcon } from "@/components/shared/Icons";
 import { Eyebrow } from "@/components/shared/SectionIntro";
 import { cn } from "@/lib/cn";
 
-type Bar = { width: string; tone: string; iconTone: string; delay: string; icon: ReactNode; text: ReactNode };
+type Bar = {
+  width: string;
+  tone: string;
+  iconTone: string;
+  delay: string;
+  icon: ReactNode;
+  text: ReactNode;
+};
 
 function BarIcon({ children }: { children: ReactNode }) {
   return (
@@ -107,7 +114,8 @@ const BARS: Bar[] = [
     ),
     text: (
       <>
-        Domains and inboxes in your name, <b className="font-bold">cost carried by us</b>
+        Domains and inboxes in your name,{" "}
+        <b className="font-bold">cost carried by us</b>
       </>
     ),
   },
@@ -137,8 +145,12 @@ const STAMPS: Array<{ strong: string; rest: string }> = [
 
 export default function PricingHero() {
   return (
-    <section id="bill" className="relative z-[1] overflow-hidden pt-[52px] pb-10 md:pt-[68px] md:pb-14" aria-labelledby="pricing-title">
-      <div className="mx-auto w-full max-w-page px-6">
+    <section
+      id="bill"
+      className="relative z-[1] overflow-hidden pt-[52px] pb-10 md:pt-[68px] md:pb-14"
+      aria-labelledby="pricing-title"
+    >
+      <div className="mx-auto w-full max-w-page px-4 md:px-6">
         <div className="grid grid-cols-1 items-center gap-11 md:grid-cols-[minmax(0,1.02fr)_minmax(0,.98fr)] md:gap-[clamp(32px,5vw,76px)]">
           <div>
             <Eyebrow>How the bill works</Eyebrow>
@@ -149,12 +161,14 @@ export default function PricingHero() {
               The bill is as simple as the promise
             </h1>
             <p className="max-w-[50ch] text-[clamp(16.5px,1.75vw,19.5px)] leading-[1.58] tracking-[-.01em] text-ink-4">
-              You pay once for the build: domains and inboxes in your name, a hand-built list, copy
-              you approve. After that you pay{" "}
-              <b className="font-semibold text-ink-2">only for meetings that happen and fit</b> the
-              criteria we write down together, plus a share of what those meetings close. No
-              retainer, no monthly fee, no minimum term. If nothing is booked, nothing is billed
-              after the setup.
+              You pay once for the build: domains and inboxes in your name, a
+              hand-built list, copy you approve. After that you pay{" "}
+              <b className="font-semibold text-ink-2">
+                only for meetings that happen and fit
+              </b>{" "}
+              the criteria we write down together, plus a share of what those
+              meetings close. No retainer, no monthly fee, no minimum term. If
+              nothing is booked, nothing is billed after the setup.
             </p>
             <div className="mt-[30px] flex flex-wrap gap-3">
               <Link href="/contact" className={cn(BTN_PRIMARY, "group")}>
@@ -168,9 +182,15 @@ export default function PricingHero() {
             <div className="mt-[26px] flex flex-wrap items-center gap-x-3 gap-y-2 font-mono text-[12px] tracking-[.06em] text-ink-5 uppercase">
               {STAMPS.map((stamp, i) => (
                 <span key={stamp.strong} className="contents">
-                  {i > 0 ? <i className="block size-1 rounded-full bg-orange-pale" aria-hidden="true" /> : null}
+                  {i > 0 ? (
+                    <i
+                      className="block size-1 rounded-full bg-orange-pale"
+                      aria-hidden="true"
+                    />
+                  ) : null}
                   <span>
-                    <b className="font-medium text-ink-2">{stamp.strong}</b> {stamp.rest}
+                    <b className="font-medium text-ink-2">{stamp.strong}</b>{" "}
+                    {stamp.rest}
                   </span>
                 </span>
               ))}
@@ -178,7 +198,10 @@ export default function PricingHero() {
           </div>
 
           <div className="relative pt-[18px] md:pt-[34px] md:pb-[10px]">
-            <div className="pointer-events-none absolute -inset-x-[30px] -inset-y-10 z-0 overflow-hidden" aria-hidden="true">
+            <div
+              className="pointer-events-none absolute -inset-x-[30px] -inset-y-10 z-0 overflow-hidden"
+              aria-hidden="true"
+            >
               <i className="absolute -top-5 -right-[30px] block size-[220px] rounded-full bg-[rgba(255,94,0,.26)] blur-[38px] md:size-[320px]" />
               <i className="absolute top-[150px] -left-[30px] block size-[220px] rounded-full bg-[rgba(254,140,90,.20)] blur-[38px] md:size-[280px]" />
               <i className="absolute right-[60px] bottom-[10px] block size-[220px] rounded-full bg-[rgba(252,200,174,.42)] blur-[38px] md:size-[240px]" />
@@ -200,12 +223,20 @@ export default function PricingHero() {
                   DR
                 </span>
                 <div className="flex min-w-0 flex-1 flex-col">
-                  <b className="text-[17px] leading-[1.2] font-semi tracking-[-.02em] text-ink">Dana Reyes</b>
-                  <span className="mt-0.5 text-[13.5px] text-ink-4">Founder, Relay</span>
+                  <b className="text-[17px] leading-[1.2] font-semi tracking-[-.02em] text-ink">
+                    Dana Reyes
+                  </b>
+                  <span className="mt-0.5 text-[13.5px] text-ink-4">
+                    Founder, Relay
+                  </span>
                 </div>
                 <div className="shrink-0 text-right">
-                  <b className="block text-[26px] leading-none font-extrabold tracking-[-.045em] text-ink md:text-[30px]">$250</b>
-                  <span className="mt-1 block font-mono text-[10px] tracking-[.08em] text-ink-5 uppercase">one meeting</span>
+                  <b className="block text-[26px] leading-none font-extrabold tracking-[-.045em] text-ink md:text-[30px]">
+                    $250
+                  </b>
+                  <span className="mt-1 block font-mono text-[10px] tracking-[.08em] text-ink-5 uppercase">
+                    one meeting
+                  </span>
                 </div>
               </div>
               <div className="mt-4 flex flex-wrap items-center gap-3 border-t border-line pt-3.5">
@@ -214,12 +245,16 @@ export default function PricingHero() {
                   Held, qualified
                 </span>
                 <span className="min-w-[160px] flex-1 text-[12.5px] leading-[1.4] text-ink-4">
-                  Booked through our calendar link, attended, fits the criteria written down at kickoff.
+                  Booked through our calendar link, attended, fits the criteria
+                  written down at kickoff.
                 </span>
               </div>
             </figure>
 
-            <ol className="relative z-[1] flex list-none flex-col gap-2" aria-label="How the bill is built, top to bottom">
+            <ol
+              className="relative z-[1] flex list-none flex-col gap-2"
+              aria-label="How the bill is built, top to bottom"
+            >
               {BARS.map((bar, i) => (
                 <li
                   key={i}
@@ -230,7 +265,12 @@ export default function PricingHero() {
                     bar.delay,
                   )}
                 >
-                  <i className={cn("flex size-[30px] shrink-0 items-center justify-center rounded-[9px] not-italic", bar.iconTone)}>
+                  <i
+                    className={cn(
+                      "flex size-[30px] shrink-0 items-center justify-center rounded-[9px] not-italic",
+                      bar.iconTone,
+                    )}
+                  >
                     {bar.icon}
                   </i>
                   <span>{bar.text}</span>

@@ -15,15 +15,29 @@ type Props = {
 };
 
 /** Left-aligned page hero used by the secondary pages. */
-export default function PageHero({ eyebrow, titleLine, gradientLine, lede, stamps, titleId = "page-title" }: Props) {
+export default function PageHero({
+  eyebrow,
+  titleLine,
+  gradientLine,
+  lede,
+  stamps,
+  titleId = "page-title",
+}: Props) {
   return (
-    <section className="relative z-[1] pt-[78px] pb-2 max-cols:pt-[52px] max-cols:pb-1" aria-labelledby={titleId}>
-      <div className="mx-auto w-full max-w-page px-6">
-        <p className="rv mb-[22px] text-[12.5px] font-bold tracking-[.16em] text-orange uppercase">{eyebrow}</p>
+    <section
+      className="relative z-[1] pt-[78px] pb-2 max-cols:pt-[52px] max-cols:pb-1"
+      aria-labelledby={titleId}
+    >
+      <div className="mx-auto w-full max-w-page px-4 md:px-6">
+        {/* rv-boot, not rv: this is above the fold, so it must not wait for hydration */}
+        <p className="rv-boot mb-[22px] text-[12.5px] font-bold tracking-[.16em] text-orange uppercase">
+          {eyebrow}
+        </p>
 
         <h1
           id={titleId}
-          className="rv mt-5 mb-[22px] text-[clamp(38px,6.2vw,74px)] leading-[1.02] font-extrabold tracking-[-.042em] text-ink"
+          style={{ animationDelay: "70ms" }}
+          className="rv-boot mt-5 mb-[22px] text-[clamp(38px,6.2vw,74px)] leading-[1.02] font-extrabold tracking-[-.042em] text-ink"
         >
           {titleLine}
           <br />
@@ -32,13 +46,29 @@ export default function PageHero({ eyebrow, titleLine, gradientLine, lede, stamp
           </span>
         </h1>
 
-        <p className="rv max-w-[58ch] text-[clamp(17px,2vw,21px)] leading-[1.55] tracking-[-.011em] text-ink-4">{lede}</p>
+        <p
+          style={{ animationDelay: "140ms" }}
+          className="rv-boot max-w-[58ch] text-[clamp(17px,2vw,21px)] leading-[1.55] tracking-[-.011em] text-ink-4"
+        >
+          {lede}
+        </p>
 
         {stamps?.length ? (
-          <div className="rv mt-[34px] flex flex-wrap items-center gap-x-4 gap-y-2.5 font-mono text-[12px] tracking-[.07em] text-ink-5 uppercase">
+          <div
+            style={{ animationDelay: "210ms" }}
+            className="rv-boot mt-[34px] flex flex-wrap items-center gap-x-4 gap-y-2.5 font-mono text-[12px] tracking-[.07em] text-ink-5 uppercase"
+          >
             {stamps.map((stamp, i) => (
-              <span key={`${stamp.label ?? ""}-${stamp.value}`} className="contents">
-                {i > 0 ? <i className="block size-1 rounded-full bg-orange-pale" aria-hidden="true" /> : null}
+              <span
+                key={`${stamp.label ?? ""}-${stamp.value}`}
+                className="contents"
+              >
+                {i > 0 ? (
+                  <i
+                    className="block size-1 rounded-full bg-orange-pale"
+                    aria-hidden="true"
+                  />
+                ) : null}
                 <span>
                   {stamp.label ? `${stamp.label} ` : null}
                   <b className="font-medium text-ink-2">{stamp.value}</b>

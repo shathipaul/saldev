@@ -10,9 +10,15 @@ const STEPS: Array<[string, string]> = [
 
 export default function StairTail() {
   return (
-    <div className="mt-[-1px] flex items-start pl-[8%] max-cols:pl-0" aria-hidden="true">
+    <div
+      className="-mt-0.5 flex items-start pl-[8%] max-cols:pl-2%"
+      aria-hidden="true"
+    >
       {STEPS.map(([height, color]) => (
-        <i key={color} className={`block w-[15%] max-cols:w-[18%] ${height} ${color}`} />
+        <i
+          key={color}
+          className={`block w-[15%] max-cols:w-[18%] ${height} ${color}`}
+        />
       ))}
     </div>
   );

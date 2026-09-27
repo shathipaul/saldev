@@ -60,12 +60,20 @@ export default function IndustriesMarquee() {
   }, [reducedMotion]);
 
   return (
-    <section className="relative z-[1] pt-5 pb-1" aria-label="Sectors we sell into">
-      <div className="mx-auto w-full max-w-page px-6">
+    <section
+      className="relative z-[1] pt-5 pb-1"
+      aria-label="Sectors we sell into"
+    >
+      <div className="mx-auto w-full max-w-page px-4 md:px-6">
         <div className="rv flex flex-wrap items-center gap-4 text-[clamp(26px,4.6vw,52px)] leading-none font-bold tracking-[-.035em] max-cols:gap-2.5">
-          <span className="rounded-xl bg-ink px-[13px] py-2 whitespace-nowrap text-white">Built for</span>
+          <span className="rounded-xl bg-ink px-[13px] py-2 whitespace-nowrap text-white">
+            Built for
+          </span>
           <div className="relative h-[1.16em] overflow-hidden">
-            <div ref={listRef} className="flex flex-col [will-change:transform]">
+            <div
+              ref={listRef}
+              className="flex flex-col [will-change:transform]"
+            >
               {MARQUEE_SECTORS.map((sector) => (
                 <span key={sector} className={LINE}>
                   {sector}
@@ -80,8 +88,8 @@ export default function IndustriesMarquee() {
           </div>
         </div>
         <p className="rv mt-[22px] max-w-[34ch] font-mono text-[12.5px] leading-normal text-ink-5">
-          Twelve sectors we already know the buyers in. If your sales cycle runs longer than a
-          fortnight, we have run it before.
+          Twelve sectors we already know the buyers in. If your sales cycle runs
+          longer than a fortnight, we have run it before.
         </p>
       </div>
     </section>

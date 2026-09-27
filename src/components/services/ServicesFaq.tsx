@@ -5,8 +5,11 @@ import { cn } from "@/lib/cn";
 /** Static question-and-answer columns: every answer is on the page. */
 export default function ServicesFaq() {
   return (
-    <section id="faq" className="relative z-[1] pt-2.5 pb-24 max-cols:pb-[70px]">
-      <div className="mx-auto w-full max-w-page px-6">
+    <section
+      id="faq"
+      className="relative z-[1] pt-2.5 pb-24 max-cols:pb-[70px]"
+    >
+      <div className="mx-auto w-full max-w-page px-4 md:px-6">
         <SectionIntro
           align="center"
           titleMax="max-w-[20ch]"
@@ -20,10 +23,17 @@ export default function ServicesFaq() {
                 <div
                   key={item.id}
                   id={item.id}
-                  className={cn("border-b border-line-2 py-[22px] first:border-t", c > 0 && "max-eq:first:border-t-0")}
+                  className={cn(
+                    "border-b border-line-2 py-[22px] first:border-t",
+                    c > 0 && "max-eq:first:border-t-0",
+                  )}
                 >
-                  <h3 className="mb-2 text-[16.5px] leading-[1.4] font-semibold tracking-[-.018em]">{item.question}</h3>
-                  <p className="text-[15px] leading-[1.66] text-ink-4">{item.answer}</p>
+                  <h3 className="mb-2 text-[16.5px] leading-[1.4] font-semibold tracking-[-.018em]">
+                    {item.question}
+                  </h3>
+                  <p className="text-[15px] leading-[1.66] text-ink-4">
+                    {item.answer}
+                  </p>
                 </div>
               ))}
             </div>

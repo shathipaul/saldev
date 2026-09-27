@@ -10,15 +10,17 @@ export default function Hero() {
     >
       <HeroBurst />
 
-      <div className="mx-auto max-w-page px-6">
+      <div className="mx-auto max-w-page px-4 md:px-6">
         <div className="relative z-[2] mx-auto flex max-w-[780px] flex-col items-center text-center">
-          <p className="rv mb-[22px] text-[12.5px] font-bold tracking-[.16em] text-orange uppercase">
+          {/* rv-boot, not rv: this is above the fold, so it must not wait for hydration */}
+          <p className="rv-boot mb-[22px] text-[12.5px] font-bold tracking-[.16em] text-orange uppercase">
             Cold email · LinkedIn · X
           </p>
 
           <h1
             id="hero-title"
-            className="rv mb-6 text-[clamp(40px,6.6vw,74px)] leading-[1.02] font-bold tracking-[-.042em] text-ink"
+            style={{ animationDelay: "70ms" }}
+            className="rv-boot mb-6 text-[clamp(40px,6.6vw,74px)] leading-[1.02] font-bold tracking-[-.042em] text-ink"
           >
             You run the business.
             <br />
@@ -27,13 +29,21 @@ export default function Hero() {
             </span>
           </h1>
 
-          <p className="rv mx-auto mb-8 max-w-[54ch] text-[clamp(16.5px,2vw,20.5px)] leading-[1.55] tracking-[-.008em] text-ink-4">
+          <p
+            style={{ animationDelay: "140ms" }}
+            className="rv-boot mx-auto mb-8 max-w-[54ch] text-[clamp(16.5px,2vw,20.5px)] leading-[1.55] tracking-[-.008em] text-ink-4"
+          >
             Cold email, LinkedIn, and X, run together as one system.{" "}
-            <span className="text-orange">Most outbound shops stop at two.</span> Your buyers are
-            already on the third.
+            <span className="text-orange">
+              Most outbound shops stop at two.
+            </span>{" "}
+            Your buyers are already on the third.
           </p>
 
-          <div className="rv flex flex-wrap justify-center gap-3 max-mini:flex-col">
+          <div
+            style={{ animationDelay: "210ms" }}
+            className="rv-boot flex flex-wrap justify-center gap-3 max-mini:flex-col"
+          >
             <Link
               href="/contact"
               className="group inline-flex h-[52px] cursor-pointer items-center justify-center gap-[9px] rounded-full bg-orange px-[26px] text-[15.5px] font-semibold text-white no-underline shadow-[0_12px_28px_-8px_rgba(255,94,0,.62)] transition-[transform,box-shadow,background] duration-300 ease-brand hover:-translate-y-0.5 hover:bg-orange-hot hover:shadow-[0_18px_38px_-10px_rgba(255,94,0,.75)] max-mini:w-full"

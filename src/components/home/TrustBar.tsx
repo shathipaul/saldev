@@ -11,7 +11,13 @@ const IMAGE_VARIANT: Record<Logo["variant"], string> = {
   compact: "h-auto max-h-[34px] w-auto max-w-[110px]",
 };
 
-function LogoItem({ logo, decorative = false }: { logo: Logo; decorative?: boolean }) {
+function LogoItem({
+  logo,
+  decorative = false,
+}: {
+  logo: Logo;
+  decorative?: boolean;
+}) {
   return (
     <div
       className={cn(
@@ -38,10 +44,13 @@ function LogoItem({ logo, decorative = false }: { logo: Logo; decorative?: boole
 
 export default function TrustBar() {
   return (
-    <section className="relative z-[1] overflow-hidden pt-10 pb-[42px]" aria-labelledby="trust-title">
+    <section
+      className="relative z-[1] overflow-hidden pt-10 pb-[42px]"
+      aria-labelledby="trust-title"
+    >
       <p
         id="trust-title"
-        className="mx-auto mb-[30px] max-w-[44ch] px-6 text-center text-[15.5px] font-medium tracking-[-.012em] text-ink-3"
+        className="mx-auto mb-[30px] max-w-[44ch] px-4 md:px-6 text-center text-[15.5px] font-medium tracking-[-.012em] text-ink-3"
       >
         Founders and revenue teams we’ve run outbound for
       </p>

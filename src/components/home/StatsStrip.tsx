@@ -2,9 +2,13 @@ import { STATS } from "@/data/stats";
 
 export default function StatsStrip() {
   return (
-    <section id="stats" className="relative z-[1] pt-[72px] pb-2" aria-label="Results at a glance">
-      <div className="mx-auto w-full max-w-page px-6">
-        <dl className="grid grid-cols-4 gap-4 max-cols:grid-cols-2">
+    <section
+      id="stats"
+      className="relative z-[1] py-[62px]"
+      aria-label="Results at a glance"
+    >
+      <div className="mx-auto w-full max-w-page px-4 md:px-6">
+        <dl className="grid grid-cols-4 gap-4 md:grid-cols-2 max-cols:grid-cols-1">
           {STATS.map((stat) => (
             <div
               key={stat.value}

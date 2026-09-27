@@ -29,7 +29,7 @@ const SOCIAL_ICON = "size-[15px] text-white/80 group-hover/soc:text-white";
 export default function Footer() {
   return (
     <footer className="relative mt-10 overflow-hidden bg-ink text-white">
-      <div className="relative z-[2] mx-auto max-w-page px-6 pt-[70px]">
+      <div className="relative z-[2] mx-auto max-w-page px-4 md:px-6 pt-[70px]">
         <div className="grid grid-cols-[1.6fr_1fr_1fr_1fr] gap-11 pb-[52px] max-cols:grid-cols-2 max-cols:gap-8 max-mini:grid-cols-1">
           <div className="f-brand">
             <Link

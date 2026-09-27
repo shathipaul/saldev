@@ -5,8 +5,8 @@ import { STEPS } from "@/data/steps";
 export default function Outbounds() {
   return (
     <section id="how" className="relative z-[1] py-24 max-cols:py-[70px]">
-      <div className="mx-auto w-full max-w-page px-6">
-        <div className="os rv relative overflow-hidden rounded-[28px] bg-ink px-12 py-14 max-cols:rounded-[22px] max-cols:px-[26px] max-cols:py-10">
+      <div className="mx-auto w-full max-w-page px-4 md:px-6">
+        <div className="os rv relative overflow-hidden rounded-[28px] bg-ink px-10 py-14 max-cols:rounded-[22px] max-cols:px-[26px] max-cols:py-10">
           <div className="relative z-[2]">
             <div className="mb-11">
               <Eyebrow tone="dark">The system</Eyebrow>
@@ -24,7 +24,10 @@ export default function Outbounds() {
                   key={step.n}
                   className="step group relative grid grid-cols-[56px_1fr] gap-[22px] border-b border-white/8 py-[22px] last:border-b-0 max-mini:grid-cols-[44px_1fr] max-mini:gap-4"
                 >
-                  <div className="relative flex flex-col items-center" aria-hidden="true">
+                  <div
+                    className="relative flex flex-col items-center"
+                    aria-hidden="true"
+                  >
                     <div className="flex size-10 shrink-0 items-center justify-center rounded-xl border border-white/14 bg-white/6 font-mono text-[13px] font-medium text-white/75 transition-all duration-500 ease-brand group-[.on]:border-transparent group-[.on]:bg-[linear-gradient(135deg,var(--color-orange),var(--color-orange-soft))] group-[.on]:text-white group-[.on]:shadow-[0_8px_22px_-6px_rgba(255,94,0,.7)]">
                       {step.n}
                     </div>
@@ -39,7 +42,9 @@ export default function Outbounds() {
                     <h3 className="mb-[9px] text-[20px] font-semibold tracking-[-.022em] text-white">
                       {step.title}
                     </h3>
-                    <p className="max-w-[62ch] text-[15px] leading-[1.64] text-white/60">{step.body}</p>
+                    <p className="max-w-[62ch] text-[15px] leading-[1.64] text-white/60">
+                      {step.body}
+                    </p>
                   </div>
                 </li>
               ))}

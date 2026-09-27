@@ -7,8 +7,11 @@ const PILL =
 
 export default function Industries() {
   return (
-    <section id="industries" className="relative z-[1] pt-5 pb-24 max-cols:pb-[70px]">
-      <div className="mx-auto w-full max-w-page px-6">
+    <section
+      id="industries"
+      className="relative z-[1] pt-5 pb-24 max-cols:pb-[70px]"
+    >
+      <div className="mx-auto w-full max-w-page px-4 md:px-6">
         <SectionIntro
           align="center"
           className="mb-[34px]"
@@ -20,18 +23,26 @@ export default function Industries() {
               <b className="font-semibold text-ink">
                 Twelve sectors, and the buying committees inside them.
               </b>{" "}
-              That is the difference between a sequence that reads researched and one that reads
-              scraped.
+              That is the difference between a sequence that reads researched
+              and one that reads scraped.
             </>
           }
         />
         <ul className="rv mx-auto flex max-w-[860px] list-none flex-wrap justify-center gap-[9px]">
           {INDUSTRY_ROWS.map((row, r) => (
             <Fragment key={r}>
-              {r > 0 ? <li className="m-0 h-0 basis-full max-phone:hidden" aria-hidden="true" /> : null}
+              {r > 0 ? (
+                <li
+                  className="m-0 h-0 basis-full max-phone:hidden"
+                  aria-hidden="true"
+                />
+              ) : null}
               {row.map((name) => (
                 <li key={name} className={PILL}>
-                  <i className="size-[5px] shrink-0 rounded-full bg-orange not-italic" aria-hidden="true" />
+                  <i
+                    className="size-[5px] shrink-0 rounded-full bg-orange not-italic"
+                    aria-hidden="true"
+                  />
                   {name}
                 </li>
               ))}

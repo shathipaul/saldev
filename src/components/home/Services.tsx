@@ -7,7 +7,8 @@ const CHANNELS: Channel[] = [
   {
     sign: "",
     name: "Email",
-    blurb: "Researched sequences from dedicated, warmed domains. One person, one reason to reply.",
+    blurb:
+      "Researched sequences from dedicated, warmed domains. One person, one reason to reply.",
   },
   {
     sign: "+",
@@ -32,7 +33,7 @@ const BLURB =
 export default function Services() {
   return (
     <section id="services" className="relative z-[1] py-24 max-cols:py-[70px]">
-      <div className="mx-auto w-full max-w-page px-6">
+      <div className="mx-auto w-full max-w-page px-4 md:px-6">
         <SectionIntro
           eyebrow="What we run"
           title="Three channels. One system."
@@ -48,7 +49,7 @@ export default function Services() {
 
         {/* "the equation" */}
         <div className="rv grid grid-cols-[1fr_auto] items-end gap-10 max-eq:grid-cols-1 max-eq:gap-[22px]">
-          <ul className="list-none">
+          <ul className="list-none space-y-4">
             {CHANNELS.map((channel) => (
               <li key={channel.name} tabIndex={0} className={ROW}>
                 <span
@@ -87,13 +88,17 @@ export default function Services() {
 
         <div className="rv mt-[26px] flex flex-wrap justify-between gap-[18px] border-t border-line-2 pt-3.5 text-[13.5px] text-ink-4">
           <span>
-            <b className="font-semibold text-ink">Underneath all three:</b> dedicated domains, never
-            your primary · warm-up first · SPF, DKIM, DMARC · slow ramp · placement watched daily ·
-            backup domains warming.
+            <b className="font-semibold text-ink">Underneath all three:</b>{" "}
+            dedicated domains, never your primary · warm-up first · SPF, DKIM,
+            DMARC · slow ramp · placement watched daily · backup domains
+            warming.
           </span>
           <span className="max-eq:hidden">
             Hover a channel for the one-liner.{" "}
-            <Link href="/services" className="font-semibold text-orange no-underline">
+            <Link
+              href="/services"
+              className="font-semibold text-orange no-underline"
+            >
               See everything that’s included →
             </Link>
           </span>

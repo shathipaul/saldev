@@ -181,6 +181,19 @@
            transition:opacity .85s var(--ease-brand), transform .85s var(--ease-brand) }
   .rv.in { opacity:1; transform:none }
 
+  /* ---------- the same entrance for above-the-fold content ----------
+       .rv cannot do this job: it holds opacity:0 until ScrollReveal
+       hydrates, so on a phone the headline sat blank for ~4s and LCP
+       was measured there. Here the hidden state lives in the keyframes,
+       which means the element is visible whenever the animation does
+       not run: no JavaScript, no CSS animation support, reduced motion.
+       Stagger with an inline animation-delay, mirroring the observer. */
+  .rv-boot { animation:rv-rise .85s var(--ease-brand) both }
+  @keyframes rv-rise {
+    from { opacity:0; transform:translateY(26px) }
+    to   { opacity:1; transform:none }
+  }
+
   /* ---------- Zaymo side glow ----------
      Two circle-clipped radial ellipses whose centres sit off-screen.
      Only the outer shoulder shows, so it hugs the edge instead of

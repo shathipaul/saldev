@@ -5,8 +5,11 @@ import { CALL_SECTIONS, CONTACT_EMAIL } from "@/data/contact";
 /** Two columns: what the call covers, and the request card. */
 export default function ContactSection() {
   return (
-    <section id="form" className="relative z-[1] pt-14 pb-24 max-cols:pb-[70px]">
-      <div className="mx-auto w-full max-w-page px-6">
+    <section
+      id="form"
+      className="relative z-[1] pt-14 pb-24 max-cols:pb-[70px]"
+    >
+      <div className="mx-auto w-full max-w-page px-4 md:px-6">
         <div className="grid grid-cols-[1fr_1.05fr] items-start gap-10 max-eq:grid-cols-1">
           <div className="rv">
             {/* headings and lists are siblings so only the very first heading drops its top margin */}
@@ -29,7 +32,10 @@ export default function ContactSection() {
             ))}
             <p className="mt-[22px] text-[14px] leading-[1.6] text-ink-4">
               Prefer email? Write to{" "}
-              <a href={`mailto:${CONTACT_EMAIL}`} className="font-semibold text-ink no-underline">
+              <a
+                href={`mailto:${CONTACT_EMAIL}`}
+                className="font-semibold text-ink no-underline"
+              >
                 {CONTACT_EMAIL}
               </a>{" "}
               with your company and a line about who you sell to.
@@ -37,12 +43,17 @@ export default function ContactSection() {
           </div>
 
           <div className="rv rounded-lg border border-line bg-white px-[30px] pt-[30px] pb-[26px] shadow-[0_30px_66px_-50px_rgba(0,0,0,.5)]">
-            <h2 className="mb-1.5 text-[22px] font-bold tracking-[-.025em]">Request the call</h2>
-            <p className="mb-5 text-[14px] leading-[1.5] text-ink-4">Four fields. We reply with times.</p>
+            <h2 className="mb-1.5 text-[22px] font-bold tracking-[-.025em]">
+              Request the call
+            </h2>
+            <p className="mb-5 text-[14px] leading-[1.5] text-ink-4">
+              Four fields. We reply with times.
+            </p>
             <ContactForm />
             {/* Calendar embed slot: replace with the Cal.com / Calendly embed once a booking link exists. */}
             <p className="mt-[18px] rounded-md border border-dashed border-line-2 px-[18px] py-4 text-center text-[13.5px] text-ink-5">
-              Calendar booking is coming. Until then, send the form and we’ll reply with times.
+              Calendar booking is coming. Until then, send the form and we’ll
+              reply with times.
             </p>
           </div>
         </div>

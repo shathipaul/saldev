@@ -14,7 +14,7 @@ type Props = {
 export default function LegalArticle({ updated, scope, toc, children }: Props) {
   return (
     <section className="relative z-[1] py-24 max-cols:py-[70px]">
-      <div className="mx-auto w-full max-w-page px-6">
+      <div className="mx-auto w-full max-w-page px-4 md:px-6">
         <div className="max-w-[780px]">
           <p className="mb-[26px] flex flex-wrap gap-3.5 font-mono text-[11.5px] tracking-[.08em] text-ink-5 uppercase">
             <span>Last updated: {updated}</span>
@@ -45,14 +45,21 @@ export default function LegalArticle({ updated, scope, toc, children }: Props) {
 }
 
 /** Yellow "fill this in" marker carried over from the source. */
-export function Placeholder({ children = LEGAL_ENTITY_PLACEHOLDER }: { children?: ReactNode }) {
+export function Placeholder({
+  children = LEGAL_ENTITY_PLACEHOLDER,
+}: {
+  children?: ReactNode;
+}) {
   return <mark>{children}</mark>;
 }
 
 /** The contact inbox as a mailto link, styled like the bold runs around it. */
 export function Email() {
   return (
-    <a href={`mailto:${CONTACT_EMAIL}`} className="font-semibold text-ink no-underline">
+    <a
+      href={`mailto:${CONTACT_EMAIL}`}
+      className="font-semibold text-ink no-underline"
+    >
       {CONTACT_EMAIL}
     </a>
   );

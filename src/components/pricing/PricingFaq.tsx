@@ -4,12 +4,24 @@ import { PRICING_FAQ } from "@/data/pricing-page";
 /** Native disclosure widgets: no script, indexable, keyboard-ready. */
 export default function PricingFaq() {
   return (
-    <section id="faq" className="relative z-[1] py-24" aria-labelledby="faq-title">
-      <div className="mx-auto w-full max-w-page px-6">
-        <SectionIntro align="center" eyebrow="Questions" title="Six things people ask before booking." />
+    <section
+      id="faq"
+      className="relative z-[1] py-24"
+      aria-labelledby="faq-title"
+    >
+      <div className="mx-auto w-full max-w-page px-4 md:px-6">
+        <SectionIntro
+          align="center"
+          eyebrow="Questions"
+          title="Six things people ask before booking."
+        />
         <div className="mx-auto max-w-[840px]">
           {PRICING_FAQ.map((item) => (
-            <details key={item.id} id={item.id} className="group border-b border-line-2 first:border-t">
+            <details
+              key={item.id}
+              id={item.id}
+              className="group border-b border-line-2 first:border-t"
+            >
               <summary className="flex cursor-pointer list-none items-start justify-between gap-5 px-0.5 py-5 text-[16px] leading-[1.4] font-semibold tracking-[-.018em] text-ink sm:px-1 sm:py-6 sm:text-[17.5px] [&::-webkit-details-marker]:hidden">
                 {item.question}
                 <span
@@ -28,7 +40,9 @@ export default function PricingFaq() {
                   </svg>
                 </span>
               </summary>
-              <p className="pr-[30px] pb-[26px] pl-1 text-[15.4px] leading-[1.68] text-ink-4 sm:pr-[46px]">{item.answer}</p>
+              <p className="pr-[30px] pb-[26px] pl-1 text-[15.4px] leading-[1.68] text-ink-4 sm:pr-[46px]">
+                {item.answer}
+              </p>
             </details>
           ))}
         </div>

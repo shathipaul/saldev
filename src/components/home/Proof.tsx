@@ -69,7 +69,7 @@ function CaseStudyCard({ study }: { study: CaseStudy }) {
 export default function Proof() {
   return (
     <section id="proof" className="relative z-[1] py-24 max-cols:py-[70px]">
-      <div className="mx-auto w-full max-w-page px-6">
+      <div className="mx-auto w-full max-w-page px-4 md:px-6">
         <SectionIntro
           eyebrow="Proof"
           title="What this looks like when it runs"

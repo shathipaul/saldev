@@ -28,7 +28,7 @@ export default function DarkListSection({
 }: Props) {
   return (
     <section id={id} className={cn("relative z-[1]", className)}>
-      <div className="mx-auto w-full max-w-page px-6">
+      <div className="mx-auto w-full max-w-page px-4 md:px-6">
         <div className="os rv relative overflow-hidden rounded-[28px] bg-ink px-12 py-14 max-cols:rounded-[22px] max-cols:px-[26px] max-cols:py-10">
           <div className="relative z-[2]">
             <div className="mb-11">
@@ -36,7 +36,9 @@ export default function DarkListSection({
               <h2 className="mt-4 mb-3 text-[clamp(30px,4.2vw,46px)] leading-[1.06] font-bold tracking-[-.035em] text-white">
                 {title}
               </h2>
-              <p className="max-w-[52ch] text-[17px] leading-[1.55] text-white/62">{lede}</p>
+              <p className="max-w-[52ch] text-[17px] leading-[1.55] text-white/62">
+                {lede}
+              </p>
             </div>
 
             <ol className="grid list-none gap-0">
@@ -45,14 +47,19 @@ export default function DarkListSection({
                   key={item.title}
                   className="grid grid-cols-[44px_1fr] gap-x-5 border-t border-white/10 py-6 first:border-t-0 first:pt-0 max-phone:grid-cols-[32px_1fr] max-phone:gap-x-3.5"
                 >
-                  <span className="pt-1 font-mono text-[12px] font-medium text-orange-soft" aria-hidden="true">
+                  <span
+                    className="pt-1 font-mono text-[12px] font-medium text-orange-soft"
+                    aria-hidden="true"
+                  >
                     {item.n}
                   </span>
                   <div>
                     <h3 className="mb-2 text-[clamp(17px,1.8vw,20px)] font-semi tracking-[-.024em] text-white">
                       {item.title}
                     </h3>
-                    <p className="max-w-[62ch] text-[15.5px] leading-[1.62] text-white/60">{item.body}</p>
+                    <p className="max-w-[62ch] text-[15.5px] leading-[1.62] text-white/60">
+                      {item.body}
+                    </p>
                   </div>
                 </li>
               ))}
