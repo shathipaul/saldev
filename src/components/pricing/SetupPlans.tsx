@@ -42,7 +42,8 @@ function SetupCard({ setup, second }: { setup: Setup; second?: boolean }) {
         ))}
       </ul>
       <Link
-        href="/contact"
+        href="https://calendly.com/saldev/20min"
+        target="_blank"
         className="group mt-6 inline-flex items-center gap-[7px] text-[14.5px] font-semibold text-ink no-underline"
       >
         Book a 20-min call

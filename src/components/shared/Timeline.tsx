@@ -25,7 +25,7 @@ export default function Timeline({ rows, noteStyle = "scaled" }: Props) {
         <li
           key={row.id ?? `${row.label}-${row.title}`}
           id={row.id}
-          className="rv group grid grid-cols-[clamp(78px,9vw,124px)_22px_1fr] items-start pb-[42px] last:pb-0 max-phone:grid-cols-[64px_20px_1fr] max-phone:pb-[34px]"
+          className="rv group grid gap-4 grid-cols-[clamp(78px,9vw,124px)_22px_1fr] items-start pb-[42px] last:pb-0 max-phone:grid-cols-[64px_20px_1fr] max-phone:pb-[34px]"
         >
           <span
             className={cn(
@@ -34,18 +34,28 @@ export default function Timeline({ rows, noteStyle = "scaled" }: Props) {
             )}
           >
             {row.label}
-            {row.note ? <small className={NOTE[noteStyle]}>{row.note}</small> : null}
+            {row.note ? (
+              <small className={NOTE[noteStyle]}>{row.note}</small>
+            ) : null}
           </span>
 
-          <span className="relative block w-[22px] self-stretch justify-self-center" aria-hidden="true">
+          <span
+            className="relative block w-[38px] self-stretch justify-self-center"
+            aria-hidden="true"
+          >
             <i className="absolute top-1.5 left-1/2 z-[2] block size-[9px] -translate-x-1/2 rounded-full border-2 border-line-2 bg-white transition-[border-color,box-shadow] duration-[600ms] ease-brand group-[.in]:border-orange group-[.in]:shadow-[0_0_0_4px_rgba(255,94,0,.12)]" />
             <i className="absolute top-4 bottom-[-42px] left-1/2 block w-px -translate-x-1/2 bg-line-2 group-last:hidden max-phone:bottom-[-34px]" />
           </span>
 
           <div>
-            <h3 className="mb-[9px] text-[clamp(18px,1.9vw,21px)] font-semi tracking-[-.024em] text-ink">{row.title}</h3>
+            <h3 className="mb-[9px] text-[clamp(18px,1.9vw,21px)] font-semi tracking-[-.024em] text-ink">
+              {row.title}
+            </h3>
             <p className="max-w-[60ch] text-[16px] leading-[1.63] text-ink-4">
-              <RichText runs={row.body} emphasisClassName="font-semibold text-ink-2 not-italic" />
+              <RichText
+                runs={row.body}
+                emphasisClassName="font-semibold text-ink-2 not-italic"
+              />
             </p>
             {row.you || row.us ? (
               // body size, not the smaller meta size: the source's `.ch-body p` rule

@@ -32,7 +32,11 @@ const LINKS: NavLink[] = [
   { label: "Services", href: "/services", icon: <GridIcon className={ICON} /> },
   { label: "Pricing", href: "/pricing", icon: <DollarIcon className={ICON} /> },
   { label: "About", href: "/about", icon: <PeopleIcon className={ICON} /> },
-  { label: "FAQ", href: "/#faq", icon: <HelpIcon className={ICON} /> },
+  {
+    label: "Contact Us",
+    href: "/contact",
+    icon: <HelpIcon className={ICON} />,
+  },
 ];
 
 /** True once the page has scrolled past the top; drives the "stuck" style. */
@@ -116,7 +120,8 @@ export default function Navbar() {
         {/* Below the mini breakpoint the logo, this button and the burger
             cannot share one row, and the menu repeats the same call to action. */}
         <Link
-          href="/contact"
+          href="https://calendly.com/saldev/20min"
+          target="_blank"
           className="group inline-flex h-[42px] shrink-0 items-center gap-2 rounded-full bg-orange px-5 max-mini:hidden text-[14.5px] font-semibold text-white no-underline shadow-[0_8px_20px_-6px_rgba(255,94,0,.6)] transition-[transform,box-shadow,background] duration-300 ease-brand hover:-translate-y-0.5 hover:bg-orange-hot hover:shadow-[0_14px_30px_-8px_rgba(255,94,0,.72)]"
         >
           Book a 20-min call
@@ -158,7 +163,8 @@ export default function Navbar() {
           </Link>
         ))}
         <Link
-          href="/contact"
+          href="https://calendly.com/saldev/20min"
+          target="_blank"
           onClick={close}
           className="mt-3 block rounded-full border-b-0 bg-orange p-3.5 text-center text-[16px] font-semibold tracking-[-.015em] text-white no-underline"
         >

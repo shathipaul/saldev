@@ -72,7 +72,8 @@ export default function FitSection() {
         <p className="rv mt-[18px] text-[15px] text-ink-4">
           Not sure which side you land on?{" "}
           <Link
-            href="/contact"
+            href="https://calendly.com/saldev/20min"
+            target="_blank"
             className="font-semibold text-orange no-underline"
           >
             Book the call

@@ -45,7 +45,8 @@ export default function Hero() {
             className="rv-boot flex flex-wrap justify-center gap-3 max-mini:flex-col"
           >
             <Link
-              href="/contact"
+              href="https://calendly.com/saldev/20min"
+              target="_blank"
               className="group inline-flex h-[52px] cursor-pointer items-center justify-center gap-[9px] rounded-full bg-orange px-[26px] text-[15.5px] font-semibold text-white no-underline shadow-[0_12px_28px_-8px_rgba(255,94,0,.62)] transition-[transform,box-shadow,background] duration-300 ease-brand hover:-translate-y-0.5 hover:bg-orange-hot hover:shadow-[0_18px_38px_-10px_rgba(255,94,0,.75)] max-mini:w-full"
             >
               Book a 20-min call

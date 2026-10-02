@@ -59,7 +59,8 @@ export default function FinalCTA({
           </p>
           <div className="rv flex flex-wrap justify-center gap-3 max-mini:flex-col">
             <Link
-              href="/contact"
+              href="https://calendly.com/saldev/20min"
+              target="_blank"
               className={cn(
                 gradient ? BTN_GRADIENT : BTN_PRIMARY,
                 "group max-mini:w-full",

@@ -51,10 +51,10 @@ export default function ContactSection() {
             </p>
             <ContactForm />
             {/* Calendar embed slot: replace with the Cal.com / Calendly embed once a booking link exists. */}
-            <p className="mt-[18px] rounded-md border border-dashed border-line-2 px-[18px] py-4 text-center text-[13.5px] text-ink-5">
+            {/* <p className="mt-[18px] rounded-md border border-dashed border-line-2 px-[18px] py-4 text-center text-[13.5px] text-ink-5">
               Calendar booking is coming. Until then, send the form and we’ll
               reply with times.
-            </p>
+            </p> */}
           </div>
         </div>
       </div>

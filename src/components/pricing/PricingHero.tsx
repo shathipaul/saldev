@@ -171,7 +171,11 @@ export default function PricingHero() {
               nothing is booked, nothing is billed after the setup.
             </p>
             <div className="mt-[30px] flex flex-wrap gap-3">
-              <Link href="/contact" className={cn(BTN_PRIMARY, "group")}>
+              <Link
+                href="https://calendly.com/saldev/20min"
+                target="_blank"
+                className={cn(BTN_PRIMARY, "group")}
+              >
                 Book a 20-min call
                 <ArrowIcon className="size-[15px]" />
               </Link>
