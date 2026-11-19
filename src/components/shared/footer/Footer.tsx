@@ -34,7 +34,7 @@ export default function Footer() {
           <div className="f-brand">
             <Link
               href="/"
-              className="group flex shrink-0 items-center gap-[9px] no-underline"
+              className="group flex shrink-0 items-center gap-3 no-underline"
               aria-label="SalDev home"
             >
               <span className="brand-mark block size-9 shrink-0 [filter:drop-shadow(0_0_0_rgba(0,0,0,0))_drop-shadow(0_2px_10px_rgba(255,94,0,.25))] transition-transform duration-[400ms] ease-brand group-hover:rotate-[-6deg] group-hover:scale-[1.06]">
@@ -47,6 +47,20 @@ export default function Footer() {
             <p className="mt-4 max-w-[30ch] text-[14.5px] leading-[1.6] text-white/55">
               Multichannel outbound. Email, LinkedIn, X. You own everything.
             </p>
+            <div className="mt-5 flex max-w-[34ch] flex-col gap-2 border-l-2 border-orange/60 pl-3 text-[13.5px] leading-[1.65] text-white/55">
+              <span>
+                Address: Konkona Tower, Anondhodhara, North Chapain, Savar,
+                Dhaka 1343, Bangladesh
+              </span>
+              <span>
+                <Link
+                  href="tel:+8801406380300"
+                  className="text-white/75 underline decoration-white/25 underline-offset-4 transition-colors duration-300 ease-brand hover:text-orange-soft hover:decoration-orange-soft"
+                >
+                  +8801406380300
+                </Link>
+              </span>
+            </div>
           </div>
 
           {FOOTER_COLUMNS.map((column) => (
