@@ -25,8 +25,8 @@ export const FOOTER_COLUMNS: Array<{ heading: string; links: FooterLink[] }> = [
     links: [
       { label: "Book a call", href: "/contact" },
       { label: "About us", href: "/about" },
-      { label: "Privacy", href: "/privacy" },
-      { label: "Terms", href: "/terms" },
+      { label: "Policy", href: "/policy" },
+      // { label: "Terms", href: "/terms" },
     ],
   },
 ];

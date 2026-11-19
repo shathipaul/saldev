@@ -14,13 +14,17 @@ import {
 import { pageMetadata } from "@/lib/metadata";
 import { SITE_URL } from "@/lib/site";
 
-const PATH = "/privacy";
+const PATH = "/policy";
 
 export async function generateMetadata(
-  _props: PageProps<"/privacy">,
+  _props: PageProps<"/policy">,
   parent: ResolvingMetadata,
 ): Promise<Metadata> {
-  return pageMetadata(parent, { title: PRIVACY_TITLE, description: PRIVACY_DESCRIPTION, path: PATH });
+  return pageMetadata(parent, {
+    title: PRIVACY_TITLE,
+    description: PRIVACY_DESCRIPTION,
+    path: PATH,
+  });
 }
 
 const webPageJsonLd = {
@@ -41,7 +45,12 @@ const breadcrumbJsonLd = {
   "@type": "BreadcrumbList",
   itemListElement: [
     { "@type": "ListItem", position: 1, name: "Home", item: `${SITE_URL}/` },
-    { "@type": "ListItem", position: 2, name: "Privacy policy", item: `${SITE_URL}${PATH}` },
+    {
+      "@type": "ListItem",
+      position: 2,
+      name: "Privacy policy",
+      item: `${SITE_URL}${PATH}`,
+    },
   ],
 };
 
@@ -55,9 +64,10 @@ export default function PrivacyPage() {
         gradientLine="yours and your prospects’."
         lede={
           <>
-            We run cold email, LinkedIn and X outreach for B2B clients, which means we handle three kinds of
-            personal data: yours as a visitor or client, and the business contact details of the people we
-            write to on a client’s behalf.{" "}
+            We run cold email, LinkedIn and X outreach for B2B clients, which
+            means we handle three kinds of personal data: yours as a visitor or
+            client, and the business contact details of the people we write to
+            on a client’s behalf.{" "}
             <b className="font-semibold text-ink-2">
               This page says what we collect, why, and how to make us stop.
             </b>
@@ -65,7 +75,11 @@ export default function PrivacyPage() {
         }
       />
 
-      <LegalArticle updated={LEGAL_UPDATED} scope={LEGAL_SCOPE} toc={PRIVACY_TOC}>
+      <LegalArticle
+        updated={LEGAL_UPDATED}
+        scope={LEGAL_SCOPE}
+        toc={PRIVACY_TOC}
+      >
         <PrivacyPolicy />
       </LegalArticle>
 

@@ -152,10 +152,7 @@ export default function ContactForm() {
 
       <p className="mt-3 text-center text-[12.5px] leading-[1.5] text-ink-5">
         By sending you agree to our{" "}
-        <Link
-          href="/privacy"
-          className="font-semibold text-orange no-underline"
-        >
+        <Link href="/policy" className="font-semibold text-orange no-underline">
           privacy policy
         </Link>
         .
